@@ -1,4 +1,5 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
+import axios from "axios";
 import Sticky from 'react-stickynode';
 import Toolbar from 'components/UI/Toolbar/Toolbar';
 import { Checkbox } from 'antd';
@@ -12,7 +13,10 @@ import useDataApi from 'library/hooks/useDataApi';
 import { SINGLE_POST_PAGE } from 'settings/constant';
 import ListingWrapper, { PostsWrapper, ShowMapCheckbox } from './Listing.style';
 
-export const Listing = ({ location, history }) => {
+const Listing = ({ location, history }) => {
+
+  const [exhbnList, setExhbnList] = useState([])
+
   let url = '/data/hotel.json';
   const { width } = useWindowSize();
   const [showMap, setShowMap] = useState(false);
@@ -28,7 +32,30 @@ export const Listing = ({ location, history }) => {
     setShowMap((showMap) => !showMap);
   };
 
+  const URL = '/exhbns/all'
+  useEffect(() => {
+    axios.get(URL, )
+    .then((resp) => {
+      alert('성공')
+      setExhbnList(resp.data)
+    })
+    .catch((err) => {
+      alert('실패')
+      throw err;
+    })
+  }, [])
+
   return (
+    <>
+    <ul>
+      {exhbnList.map(i => (
+        <li
+          key = {i.exhbnNum}
+        >
+          {i.exhbnTitle}
+        </li>
+      ))}
+    </ul>
     <ListingWrapper>
       <Sticky top={82} innerZ={999} activeClass="isHeaderSticky">
         <Toolbar
@@ -66,6 +93,7 @@ export const Listing = ({ location, history }) => {
         {showMap && <ListingMap />}
       </Fragment>
     </ListingWrapper>
+    </>
   );
 }
-export default Listing
+export default Listing;

@@ -5,8 +5,10 @@
 		"@glidejs/glide": "^3.4.1",
 		"@styled-system/theme-get": "^5.1.2",
 		"antd": "^4.2.2",
+		"axios": "^0.21.1",
 		"dayjs": "^1.10.4",
 		"history": "^5.0.0",
+		"http-proxy-middleware": "^1.0.6",
 		"js-cookie": "^2.2.1",
 		"little-state-machine": "^3.0.2",
 		"lodash": "^4.17.20",
@@ -55,5 +57,6 @@
 		"babel-plugin-import": "^1.13.0",
 		"customize-cra": "^1.0.0",
 		"react-app-rewired": "^2.1.8"
-	}
+	},
+	"proxy": "http://localhost:8080"
 }
