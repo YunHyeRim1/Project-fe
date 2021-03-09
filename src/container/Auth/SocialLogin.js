@@ -4,6 +4,7 @@ import { Row, Col, Button } from 'antd';
 import { AuthContext } from 'context/AuthProvider';
 
 const SocialLogin = () => {
+  const [count, setCount] = useState(0)
   const { signUp, loggedIn } = useContext(AuthContext);
   const [state, setState] = useState({
     facebook: false,
@@ -29,6 +30,8 @@ const SocialLogin = () => {
   }
 
   return (
+    <>
+    <h2>{count}</h2>
     <div>
       <Row gutter={16}>
         <Col span={12}>
@@ -38,7 +41,8 @@ const SocialLogin = () => {
             type="primary"
             style={{ width: '100%', marginBottom: 16 }}
             size="large"
-            onClick={() => handleSocialAuth('facebook')}
+            //onClick={() => handleSocialAuth('facebook')}
+            onClick = {() => setCount(i => i + 1)}
           >
             Facebook
           </Button>
@@ -50,7 +54,8 @@ const SocialLogin = () => {
             type="primary"
             style={{ width: '100%', marginBottom: 16 }}
             size="large"
-            onClick={() => handleSocialAuth('github')}
+            //onClick={() => handleSocialAuth('github')}
+            onClick = {() => setCount(i => i - 1)}
           >
             Github
           </Button>
@@ -82,7 +87,7 @@ const SocialLogin = () => {
           </Button>
         </Col>
       </Row>
-    </div>
+    </div></>
   );
 };
 

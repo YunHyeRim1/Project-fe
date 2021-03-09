@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
+import axios from "axios";
 import { Redirect } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
 import { MdLockOpen } from 'react-icons/md';
@@ -6,120 +7,108 @@ import { Input, Switch, Button } from 'antd';
 import FormControl from 'components/UI/FormControl/FormControl';
 import { AuthContext } from 'context/AuthProvider';
 import { FieldWrapper, SwitchWrapper, Label } from '../Auth.style';
+import {TextField} from '@material-ui/core'
 
 const SignUpForm = () => {
-  const { signUp, loggedIn } = useContext(AuthContext);
-  const { control, watch, errors, handleSubmit } = useForm({
-    mode: 'onChange',
-  });
-  const password = watch('password');
-  const confirmPassword = watch('confirmPassword');
-  const onSubmit = (data) => {
-    signUp(data);
-  };
-  if (loggedIn) {
-    return <Redirect to={{ pathname: '/' }} />;
+  const {control} = useForm();
+  const [userid, setUserid] = useState('')
+  const [password, setPassword] = useState('')
+  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
+  const [gender, setGender] = useState('')
+  const [birthday, setBirthday] = useState('')
+  const [phoneNumber, setPhoneNumber] = useState('')
+  const [preferGenre, setPreferGenre] = useState('')
+
+  const register = e => {
+    e.preventDefault()
+    axios.post(`/users/save`, {
+      userid, password, username, email, gender, birthday, phoneNumber, preferGenre,
+      proxy: {
+        host: 'localhost',
+        port: 8080,
+        protocol: 'http'
+      }
+    })
+    .then(resp => {
+      alert('회원가입 성공')
+    })
+    .catch(err => {
+      alert('회원가입 실패')
+    })
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form>
       <FormControl
-        label="Username"
-        htmlFor="username"
-        error={
-          errors.username && (
-            <>
-              {errors.username?.type === 'required' && (
-                <span>This field is required!</span>
-              )}
-            </>
-          )
-        }
+        label="User ID"
       >
         <Controller
-          as={<Input />}
-          id="username"
-          name="username"
+          as={<Input
+            onChange = {e => {setUserid(`${e.target.value}`)}}
+          />}
+          id="userid" 
+          name="userid"
           defaultValue=""
           control={control}
-          rules={{
-            required: true,
-          }}
+          rules={{ required: true }}
         />
       </FormControl>
       <FormControl
-        label="Email"
-        htmlFor="email"
-        error={
-          errors.email && (
-            <>
-              {errors.email?.type === 'required' && (
-                <span>This field is required!</span>
-              )}
-              {errors.email?.type === 'pattern' && (
-                <span>Please enter a valid email address!</span>
-              )}
-            </>
-          )
-        }
+        label="Name"
       >
         <Controller
-          as={<Input />}
+          as={<Input
+            onChange = {e => {setUsername(`${e.target.value}`)}}
+          />}
+          id="username" 
+          name="username"
+          defaultValue=""
+          control={control}
+          rules={{ required: true }}
+        />
+      </FormControl>
+      <FormControl
+        label="Email Address"
+      >
+        <Controller
+          as={<Input
+            onChange = {e => {setEmail(`${e.target.value}`)}}
+          />}
+          id="email" 
           type="email"
-          id="email"
           name="email"
           defaultValue=""
           control={control}
-          rules={{
-            required: true,
-            pattern: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
-          }}
+          rules={{ required: true }}
         />
       </FormControl>
       <FormControl
         label="Password"
-        htmlFor="password"
-        error={
-          errors.password && (
-            <>
-              {errors.password?.type === 'required' && (
-                <span>This field is required!</span>
-              )}
-              {errors.password?.type === 'minLength' && (
-                <span>Password must be at lest 6 characters!</span>
-              )}
-              {errors.password?.type === 'maxLength' && (
-                <span>Password must not be longer than 20 characters!</span>
-              )}
-            </>
-          )
-        }
       >
         <Controller
-          as={<Input.Password />}
-          defaultValue=""
-          control={control}
+          as={<Input.Password 
+            onChange = {e => {setPassword(`${e.target.value}`)}}
+          />}
           id="password"
           name="password"
+          defaultValue=""
+          control={control}
           rules={{ required: true, minLength: 6, maxLength: 20 }}
         />
       </FormControl>
       <FormControl
-        label="Confirm password"
-        htmlFor="confirmPassword"
-        error={
-          confirmPassword &&
-          password !== confirmPassword && (
-            <span>Your password is not same!</span>
-          )
-        }
+        label="Birthday"
       >
         <Controller
-          as={<Input.Password />}
+          as={<Input
+            onChange = {e => {setBirthday(`${e.target.value}`)}}
+          />}
+          id="birthday" 
+          name="birthday"
           defaultValue=""
           control={control}
-          id="confirmPassword"
-          name="confirmPassword"
+          rules={{ required: true }}
         />
       </FormControl>
       <FieldWrapper>
@@ -144,12 +133,14 @@ const SignUpForm = () => {
           <Label>I agree with terms and conditions</Label>
         </SwitchWrapper>
       </FieldWrapper>
+
       <Button
         className="signin-btn"
         type="primary"
         htmlType="submit"
         size="large"
         style={{ width: '100%' }}
+        onClick= {register}
       >
         <MdLockOpen />
         Register

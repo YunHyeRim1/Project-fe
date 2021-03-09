@@ -14,6 +14,7 @@ import Wrapper, {
 } from '../Auth.style';
 
 const SignUp = () => {
+  
   return (
     <Wrapper>
       <FormWrapper>

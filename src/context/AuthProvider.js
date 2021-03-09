@@ -19,6 +19,7 @@ const AuthProvider = (props) => {
   const signIn = (params) => {
     console.log(params, 'sign in form Props');
     setUser(fakeUserData);
+    
     setLoggedIn(true);
     history.push(`/`);
   };
