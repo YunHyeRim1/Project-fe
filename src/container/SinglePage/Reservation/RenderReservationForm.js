@@ -111,7 +111,7 @@ const RenderReservationForm = () => {
       </FieldWrapper>
       <FormActionArea>
         <Button htmlType="submit" type="primary">
-          Book Hotel
+          예매하기
         </Button>
       </FormActionArea>
     </ReservationFormWrapper>

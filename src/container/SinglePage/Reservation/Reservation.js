@@ -17,7 +17,7 @@ const CardHeader = ({ priceStyle, pricePeriodStyle, linkStyle }) => {
         }
         {...priceStyle}
       />
-      <TextLink link="/#1" content="Contact Hotel" {...linkStyle} />
+      {/* <TextLink link="/#1" content="Contact Hotel" {...linkStyle} /> */}
     </Fragment>
   );
 };
@@ -56,6 +56,6 @@ CardHeader.defaultProps = {
   linkStyle: {
     fontSize: '15px',
     fontWeight: '700',
-    color: '#008489',
+    color: '#616266',
   },
 };

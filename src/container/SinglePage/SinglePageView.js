@@ -16,6 +16,8 @@ import SinglePageWrapper, { PostImage } from './SinglePageView.style';
 import PostImageGallery from './ImageGallery/ImageGallery';
 import useDataApi from 'library/hooks/useDataApi';
 import isEmpty from 'lodash/isEmpty';
+import Summary from './Summary/Summary';
+import { Info } from './Summary/Summary.style';
 
 const SinglePage = ({ match }) => {
   const { href } = useLocation();
@@ -43,70 +45,22 @@ const SinglePage = ({ match }) => {
 
   return (
     <SinglePageWrapper>
-      <PostImage>
-        <img
-          className="absolute"
-          src="/images/single-post-bg.jpg"
-          alt="Listing details page banner"
-        />
-        <Button
-          type="primary"
-          onClick={() => setIsModalShowing(true)}
-          className="image_gallery_button"
-        >
-          View Photos
-        </Button>
-        <Modal
-          visible={isModalShowing}
-          onCancel={() => setIsModalShowing(false)}
-          footer={null}
-          width="100%"
-          maskStyle={{
-            backgroundColor: 'rgba(255, 255, 255, 0.95)',
-          }}
-          wrapClassName="image_gallery_modal"
-          closable={false}
-        >
-          <Fragment>
-            <PostImageGallery />
-            <Button
-              onClick={() => setIsModalShowing(false)}
-              className="image_gallery_close"
-            >
-              <svg width="16.004" height="16" viewBox="0 0 16.004 16">
-                <path
-                  id="_ionicons_svg_ios-close_2_"
-                  d="M170.4,168.55l5.716-5.716a1.339,1.339,0,1,0-1.894-1.894l-5.716,5.716-5.716-5.716a1.339,1.339,0,1,0-1.894,1.894l5.716,5.716-5.716,5.716a1.339,1.339,0,0,0,1.894,1.894l5.716-5.716,5.716,5.716a1.339,1.339,0,0,0,1.894-1.894Z"
-                  transform="translate(-160.5 -160.55)"
-                  fill="#909090"
-                />
-              </svg>
-            </Button>
-          </Fragment>
-        </Modal>
-      </PostImage>
-
-      <TopBar title={title} shareURL={href} author={author} media={gallery} />
-
       <Container>
-        <Row gutter={30} id="reviewSection" style={{ marginTop: 30 }}>
+        <Row gutter={30}>
           <Col xl={16}>
-            <Description
-              content={content}
+            <Summary
               title={title}
-              location={location}
               rating={rating}
               ratingCount={ratingCount}
+              shareURL={href} media={gallery}
             />
-            <Amenities amenities={amenities} />
-            <Location location={data[0]} />
           </Col>
           <Col xl={8}>
             {width > 1200 ? (
               <Sticky
-                innerZ={999}
+                innerZ={9999}
                 activeClass="isSticky"
-                top={202}
+                top={130}
                 bottomBoundary="#reviewSection"
               >
                 <Reservation />
@@ -119,6 +73,27 @@ const SinglePage = ({ match }) => {
                 ratingCount={ratingCount}
               />
             )}
+          </Col>
+          <Col xl={8} />
+        </Row>
+      <br />
+      <br />
+      <br />
+      <br />
+        
+      <TopBar title={title} shareURL={href} author={author} media={gallery} />
+      
+        <Row gutter={30} id="reviewSection" style={{ marginTop: 30 }}>
+          <Col xl={16}>
+            <Description
+              content={content}
+              title={title}
+              location={location}
+              rating={rating}
+              ratingCount={ratingCount}
+            />
+            <Amenities amenities={amenities} />
+            <Location location={data[0]} />
           </Col>
         </Row>
         <Row gutter={30}>

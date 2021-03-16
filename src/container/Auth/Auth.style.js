@@ -36,8 +36,8 @@ export const FormWrapper = styled.div`
     height: 57px;
     font-size: 17px;
     font-weight: 700;
-    border-color: ${themeGet('primary.0', '#008489')};
-    background-color: ${themeGet('primary.0', '#008489')};
+    border-color: ${themeGet('primary.0', '#616266')};
+    background-color: ${themeGet('primary.0', '#616266')};
     svg {
       width: 18px;
       height: 18px;
@@ -48,8 +48,8 @@ export const FormWrapper = styled.div`
     }
     &:hover,
     &:focus {
-      border-color: #008489d1;
-      background-color: #008489d1;
+      border-color: #616266;
+      background-color: #616266;
     }
   }
 
@@ -101,14 +101,14 @@ export const FieldWrapper = styled.div`
   margin-top: 40px;
   margin-bottom: 40px;
   > a {
-    color: ${themeGet('primary.0', '#008489')};
+    color: ${themeGet('primary.0', '#616266')};
     font-size: 15px;
     font-weight: 700;
     line-height: 1;
     &:hover,
     &:focus {
       outline: none;
-      color: #008489d1;
+      color: #616266d1;
       text-decoration: none;
     }
   }
@@ -129,7 +129,7 @@ export const SwitchWrapper = styled.div`
     min-width: 36px;
     height: 21px;
     &.ant-switch-checked {
-      background-color: ${themeGet('primary.0', '#008489')};
+      background-color: ${themeGet('primary.0', '#616266')};
     }
     &::after {
       width: 17px;
@@ -197,11 +197,11 @@ export const Text = styled.p`
   color: ${themeGet('text.2', '#777777')};
   line-height: 1;
   a {
-    color: ${themeGet('primary.0', '#008489')};
+    color: ${themeGet('primary.0', '#616266')};
     &:hover,
     &:focus {
       outline: none;
-      color: #008489d1;
+      color: #616266d1;
       text-decoration: none;
     }
   }

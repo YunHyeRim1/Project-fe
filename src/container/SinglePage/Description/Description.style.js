@@ -12,11 +12,11 @@ const DescriptionWrapper = styled.div`
     line-height: 1;
     box-shadow: none;
     text-shadow: none;
-    color: ${themeGet('primary.0', '#008489')};
+    color: ${themeGet('primary.0', '#616266')};
 
     &:hover,
     &:focus {
-      color: ${themeGet('primary.1', '#399C9F')};
+      color: ${themeGet('primary.1', '#000000')};
     }
 
     &::after {

@@ -55,8 +55,8 @@ const SearchInput = compose(
           type="text"
           defaultValue=""
           value={locationInput.searchedLocation || ''}
-          placeholder="Search “Thailand, Asia”"
-          size="large"
+          placeholder="검색하기"
+          size="medium"
           onChange={handleOnChange}
           onPressEnter={handleOnPressEnter}
         />

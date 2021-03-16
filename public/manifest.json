@@ -1,9 +1,9 @@
 {
-	"short_name": "TripFinder.",
-	"name": "TripFinder.",
+	"short_name": "C:ART",
+	"name": "C:ART",
 	"icons": [
 		{
-			"src": "favicon.png",
+			"src": "cart-logo.png",
 			"sizes": "64x64 32x32 24x24 16x16",
 			"type": "image/png"
 		}

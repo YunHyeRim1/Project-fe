@@ -34,11 +34,11 @@ export const RatingMeta = styled.div`
   }
 
   i {
-    color: ${themeGet('primary.0', '#008489')};
+    color: ${themeGet('primary.0', '#616266')};
   }
 
   svg {
-    fill: ${themeGet('primary.0', '#008489')};
+    fill: ${themeGet('primary.0', '#616266')};
   }
 
   strong {
@@ -70,35 +70,28 @@ export const TobBarWrapper = styled.div`
   .sticky-outer-wrapper {
     .sticky-inner-wrapper {
       background-color: ${themeGet('color.1', '#ffffff')};
-
       .scrollbar {
         box-shadow: none;
-        border-top: 1px solid ${themeGet('border.3', '#E6E6E6')};
         border-bottom: 1px solid ${themeGet('border.3', '#E6E6E6')};
-
         .scrollbar_left {
           margin-right: 25px;
           padding-left: 25px;
-
           a {
             color: ${themeGet('text.0', '#2C2C2C')};
             font-size: 15px;
+            font-weight: 700;
             padding: 28px 20px;
             text-transform: capitalize;
             transition: color 0.2s ease-in-out;
-
             &:first-child {
               padding-left: 0;
             }
-
             @media (max-width: 1200px) {
               padding: 18px 20px;
             }
-
             &:hover {
               color: ${themeGet('primary.0', '#008489')};
             }
-
             &.active {
               font-weight: 700;
               color: ${themeGet('primary.0', '#008489')};
@@ -106,6 +99,7 @@ export const TobBarWrapper = styled.div`
             }
           }
         }
+
 
         .scrollbar_right {
           padding-right: 25px;
@@ -130,7 +124,7 @@ export const TobBarWrapper = styled.div`
       .sticky-inner-wrapper {
         > div {
           border: 0;
-          box-shadow: 0 2px 5px -2px rgba(0, 0, 0, 0.16);
+          box-shadow: 0 2px 5px -2px rgba(0, 0, 0, 0);
         }
       }
     }
@@ -140,26 +134,27 @@ export const TobBarWrapper = styled.div`
 export const ButtonGroup = styled.div`
   button,
   button.ant-btn {
-    margin: 0 5px;
-    height: 37px;
+    box-shadow: none;
+    border: 0;
+    margin: 15px 55px;
+    height: 5px;
     min-width: 90px;
-    padding: 0 5px;
-    border: 1px solid ${themeGet('border.3', '#E6E6E6')};
+    padding: 0px;
     color: ${themeGet('text.0', '#2C2C2C')};
-    font-size: 15px;
-    font-weight: 700;
+    font-size: 14px;
+    font-weight: 500;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     transition: background-color 0.2s ease;
     svg {
-      width: 18.309px;
+      width: 20.309px;
       height: 15.537px;
       margin-right: 10px;
       path {
         fill: transparent;
         stroke: ${themeGet('text.0', '#2C2C2C')};
-        stroke-width: 1.5px;
+        stroke-width: 1.2px;
       }
     }
 
@@ -175,20 +170,18 @@ export const ButtonGroup = styled.div`
     &:focus {
       outline: none;
     }
-    &:hover {
-      background-color: ${themeGet('color.2', '#F7F7F7')};
-    }
+    
     &:after {
       display: none;
     }
 
     &:first-child {
-      margin-left: 0;
+      margin-left: 0px;
       svg {
         position: relative;
-        top: 1px;
+        top: 0px;
         path {
-          stroke-width: 1.8px;
+          stroke-width: 1.5px;
         }
       }
     }
@@ -236,5 +229,6 @@ export const PostImage = styled.div`
     }
   }
 `;
+
 
 export default SinglePageWrapper;

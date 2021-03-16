@@ -31,7 +31,6 @@ export default function TopBar({ menu = [], other, height, className }) {
               </Link>
             ))}
           </div>
-          <div className="scrollbar_right">{other && other}</div>
         </InnerWrapper>
       </Container>
     </Wrapper>

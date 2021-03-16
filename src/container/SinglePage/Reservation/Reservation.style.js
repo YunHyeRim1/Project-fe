@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
 const ReservationFormWrapper = styled.form`
-  padding: 0 30px;
+  padding: 0 25px;
   @media (max-width: 375px) {
     padding: 0 15px;
   }
@@ -166,8 +166,8 @@ export const FormActionArea = styled.div`
     color: ${themeGet('color.1', '#ffffff')};
     font-size: 15px;
     font-weight: 700;
-    border-color: ${themeGet('primary.0', '#008489')};
-    background-color: ${themeGet('primary.0', '#008489')};
+    border-color: ${themeGet('primary.0', '#616266')};
+    background-color: ${themeGet('primary.0', '#616266')};
     transition: all 0.2s ease;
     &:hover,
     &:focus {

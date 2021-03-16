@@ -5,7 +5,7 @@ import footerBg from './footer-bg.svg';
 const FooterWrapper = styled.footer`
   width: 100%;
   background-color: ${themeGet('color.1', '#ffffff')};
-  background-image: url(${(props) => (props.bgSrc ? props.bgSrc : footerBg)});
+  background-image: url();
   background-repeat: no-repeat;
   background-position: bottom;
   background-size: 100%;
@@ -73,7 +73,7 @@ export const MenuWrapper = styled.div`
         color: ${themeGet('text.0', '#2C2C2C')};
         transition: color 0.2s ease-in-out;
         &:hover {
-          color: ${themeGet('primary.0', '#008489')};
+          color: ${themeGet('primary.0', '#616266')};
         }
       }
     }

@@ -21,17 +21,16 @@ const SignUp = () => {
         <Logo
           withLink
           linkTo="/"
-          src="/images/logo-alt.svg"
-          title="TripFinder."
+          src="/images/cart-logo.png"
         />
-        <Title>Welcome To TripFinder</Title>
-        <TitleInfo>Please Register for your account</TitleInfo>
+        <Title>C:ART에 오신 것을 환영합니다.</Title>
+        <TitleInfo>다채로운 전시를 통해 예술을 사랑하는 회원님께 감동의 순간을 선사하고자 노력합니다.</TitleInfo>
         <SignUpForm />
-        <Divider>Or Register Up With </Divider>
+        <Divider>다른 방법으로 로그인하기</Divider>
         <SocialLogin />
         <Text>
-          Already Have an Account! &nbsp;
-          <Link to={LOGIN_PAGE}>Login</Link>
+          이미 계정이 존재합니다! &nbsp;
+          <Link to={LOGIN_PAGE}>로그인</Link>
         </Text>
       </FormWrapper>
       <BannerWrapper>

@@ -110,7 +110,7 @@ const SignInForm = () => {
         onClick= {login}
       >
         <MdLockOpen />
-        Login
+        로그인
       </Button>
     </form>
   );

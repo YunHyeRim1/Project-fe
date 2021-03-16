@@ -120,7 +120,7 @@ const SignUpForm = () => {
             valueName="checked"
             control={control}
           />
-          <Label>Remember Me</Label>
+          <Label>아이디 기억하기</Label>
         </SwitchWrapper>
         <SwitchWrapper>
           <Controller
@@ -130,7 +130,7 @@ const SignUpForm = () => {
             valueName="checked"
             control={control}
           />
-          <Label>I agree with terms and conditions</Label>
+          <Label>전체 약관에 동의합니다</Label>
         </SwitchWrapper>
       </FieldWrapper>
 
@@ -143,7 +143,7 @@ const SignUpForm = () => {
         onClick= {register}
       >
         <MdLockOpen />
-        Register
+        회원가입
       </Button>
     </form>
   );

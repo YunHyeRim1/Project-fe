@@ -20,8 +20,7 @@ const SignIn = () => {
         <Logo
           withLink
           linkTo="/"
-          src="/images/logo-alt.svg"
-          title="TripFinder."
+          src="/images/cart-logo.png"
         />
         <Title>Welcome Back</Title>
         <TitleInfo>Please log into your account</TitleInfo>
