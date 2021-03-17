@@ -22,15 +22,9 @@ const Description = ({
   return (
     <Element name="overview" className="overview">
       <DescriptionWrapper>
-        <Text content={location.formattedAddress} {...locationMetaStyle} />
         <Heading as="h2" content={title} {...titleStyle} />
-        <RatingMeta>
-          <Rating rating={rating} ratingCount={ratingCount} type="bulk" />
-        </RatingMeta>
+        <Text content={location.formattedAddress} {...locationMetaStyle} />
         <Text content={content} {...contentStyle} />
-        <TextButton>
-          <Button>Read more about the hotel</Button>
-        </TextButton>
       </DescriptionWrapper>
     </Element>
   );
@@ -48,11 +42,13 @@ Description.defaultProps = {
     fontSize: ['17px', '20px', '25px'],
     lineHeight: ['1.15', '1.2', '1.36'],
     mb: '4px',
+    padding: '40px 0px 10px',
   },
   locationMetaStyle: {
-    fontSize: '13px',
+    fontSize: '15px',
     fontWeight: '400',
     color: '#909090',
+    padding: '0px 0px 40px',
   },
   contentStyle: {
     fontSize: '15px',

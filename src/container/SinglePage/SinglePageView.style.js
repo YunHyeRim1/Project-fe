@@ -68,6 +68,9 @@ export const TextButton = styled.div`
 
 export const TobBarWrapper = styled.div`
   .sticky-outer-wrapper {
+    position: relative;
+    top: 130px;
+
     .sticky-inner-wrapper {
       background-color: ${themeGet('color.1', '#ffffff')};
       .scrollbar {
@@ -75,7 +78,6 @@ export const TobBarWrapper = styled.div`
         border-bottom: 1px solid ${themeGet('border.3', '#E6E6E6')};
         .scrollbar_left {
           margin-right: 25px;
-          padding-left: 25px;
           a {
             color: ${themeGet('text.0', '#2C2C2C')};
             font-size: 15px;
@@ -84,7 +86,7 @@ export const TobBarWrapper = styled.div`
             text-transform: capitalize;
             transition: color 0.2s ease-in-out;
             &:first-child {
-              padding-left: 0;
+              padding-left: 20px;
             }
             @media (max-width: 1200px) {
               padding: 18px 20px;
@@ -136,13 +138,13 @@ export const ButtonGroup = styled.div`
   button.ant-btn {
     box-shadow: none;
     border: 0;
-    margin: 15px 55px;
+    margin: 20px 55px;
     height: 5px;
     min-width: 90px;
     padding: 0px;
     color: ${themeGet('text.0', '#2C2C2C')};
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
     display: inline-flex;
     align-items: center;
     justify-content: center;

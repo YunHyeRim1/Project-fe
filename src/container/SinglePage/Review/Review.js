@@ -350,6 +350,7 @@ Review.defaultProps = {
     color: '#2C2C2C',
     fontSize: ['17px', '20px', '25px'],
     mr: '10px',
+ 
   },
   filterHeadingStyle: {
     color: '#2C2C2C',

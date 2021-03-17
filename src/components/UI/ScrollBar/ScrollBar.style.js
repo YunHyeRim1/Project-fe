@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   min-height: 80px;
-  background-color: #bfd3f5;
   overflow-y: hidden;
 
   @media (max-width: 1200px) {

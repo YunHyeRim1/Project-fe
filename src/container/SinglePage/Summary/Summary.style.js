@@ -2,11 +2,7 @@ import styled from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
 
 const SummaryWrapper = styled.div`
-    padding: 40px 0px;
-
-    .posterimage_bottom {
-      flex-shrink: 0;
-    }
+  padding: 100px 0px 50px 0px;
 `;
 
 export const PosterImage = styled.div`
@@ -35,10 +31,6 @@ export const Info = styled.div`
   position: absolute;
   left: 400px;
   width: 100%;
-
-  .pre {
-    white-space: pre-wrap;
-  }
 
   ul {
     color: ${themeGet('text.0', '#2C2C2C')};

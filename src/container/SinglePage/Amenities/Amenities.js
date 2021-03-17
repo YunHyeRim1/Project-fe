@@ -38,6 +38,7 @@ Amenities.defaultProps = {
     fontSize: ['17px', '20px', '25px'],
     lineHeight: ['1.15', '1.2', '1.36'],
     mb: ['14px', '20px', '30px'],
+    padding: '60px 0px 0px',
   },
   linkStyle: {
     fontSize: '15px',

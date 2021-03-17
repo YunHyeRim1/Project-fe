@@ -30,7 +30,7 @@ const HotelLocation = ({ setStep }) => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <FormContent>
         <FormHeader>
-          <Title>Step 3: Hotel Location</Title>
+          <Title>전시회 등록</Title>
         </FormHeader>
         <Row gutter={30}>
           <Col sm={12}>

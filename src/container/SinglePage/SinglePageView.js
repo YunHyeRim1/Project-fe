@@ -18,6 +18,7 @@ import useDataApi from 'library/hooks/useDataApi';
 import isEmpty from 'lodash/isEmpty';
 import Summary from './Summary/Summary';
 import { Info } from './Summary/Summary.style';
+import { FixedMap } from 'container/Listing/Listing.style';
 
 const SinglePage = ({ match }) => {
   const { href } = useLocation();
@@ -60,7 +61,7 @@ const SinglePage = ({ match }) => {
               <Sticky
                 innerZ={9999}
                 activeClass="isSticky"
-                top={130}
+                top={190}
                 bottomBoundary="#reviewSection"
               >
                 <Reservation />
@@ -76,11 +77,7 @@ const SinglePage = ({ match }) => {
           </Col>
           <Col xl={8} />
         </Row>
-      <br />
-      <br />
-      <br />
-      <br />
-        
+
       <TopBar title={title} shareURL={href} author={author} media={gallery} />
       
         <Row gutter={30} id="reviewSection" style={{ marginTop: 30 }}>

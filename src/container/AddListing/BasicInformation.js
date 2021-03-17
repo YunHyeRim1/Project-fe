@@ -1,51 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useStateMachine } from 'little-state-machine';
 import { useForm, Controller } from 'react-hook-form';
-import { Row, Col, Input, InputNumber, Button } from 'antd';
-import InputIncDec from 'components/UI/InputIncDec/InputIncDec';
+import { Row, Col, Input, Button } from 'antd';
 import FormControl from 'components/UI/FormControl/FormControl';
 import AddListingAction from './AddListingAction';
 import { FormHeader, Title, FormContent, FormAction } from './AddListing.style';
 
 const BasicInformation = ({ setStep }) => {
   const { action, state } = useStateMachine(AddListingAction);
-  const { control, register, errors, setValue, handleSubmit } = useForm();
-  const [quantity, setQuantity] = useState({
-    guest: 0,
-    bed: 0,
-  });
-  useEffect(() => {
-    register({ name: 'guest' }, { required: true });
-    register({ name: 'bed' }, { required: true });
-  }, [register]);
-
-  const handleOnChange = (key) => (event) => {
-    setQuantity({
-      ...quantity,
-      [key]: event.target.value,
-    });
-    setValue([key], event.target.value);
-  };
-
-  const handleIncrement = (key) => {
-    setQuantity({
-      ...quantity,
-      [key]: ++quantity[key],
-    });
-    setValue([key], ++quantity[key]);
-  };
-
-  const handleDecrement = (key) => {
-    if (quantity[key] <= 0) {
-      return false;
-    }
-    setQuantity({
-      ...quantity,
-      [key]: --quantity[key],
-    });
-    setValue([key], --quantity[key]);
-  };
-
+  const { control, errors, handleSubmit } = useForm();
+  
   const onSubmit = (data) => {
     action(data);
     setStep(2);
@@ -55,14 +19,14 @@ const BasicInformation = ({ setStep }) => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <FormContent>
         <FormHeader>
-          <Title>Step 1: Start with the basics</Title>
+          <Title>전시회 등록</Title>
         </FormHeader>
         <Row gutter={30}>
           <Col sm={12}>
             <FormControl
-              label="Hotel Name"
+              label="제목"
               htmlFor="hotelName"
-              error={errors.hotelName && <span>This field is required!</span>}
+              error={errors.hotelName && <span>이 입력란을 작성해주세요!</span>}
             >
               <Controller
                 as={<Input />}
@@ -70,50 +34,124 @@ const BasicInformation = ({ setStep }) => {
                 name="hotelName"
                 defaultValue={state.data.hotelName}
                 control={control}
-                placeholder="Write your hotel name here"
+                placeholder="전시 제목을 입력해주세요."
                 rules={{
                   required: true,
                 }}
               />
             </FormControl>
           </Col>
+        </Row>
+        <Row gutter={30}>
           <Col sm={12}>
             <FormControl
-              label="Price Per Night (USD)"
-              htmlFor="pricePerNight"
-              error={
-                errors.pricePerNight && (
-                  <>
-                    {errors.pricePerNight?.type === 'required' && (
-                      <span>This field is required!</span>
-                    )}
-                    {errors.pricePerNight?.type === 'pattern' && (
-                      <span>Please enter only number!</span>
-                    )}
-                  </>
-                )
-              }
+              label="장소"
+              htmlFor="hotelName"
+              error={errors.hotelName && <span>이 입력란을 작성해주세요!</span>}
             >
               <Controller
-                as={<InputNumber />}
-                id="pricePerNight"
-                name="pricePerNight"
-                defaultValue={state.data.pricePerNight}
+                as={<Input />}
+                id="hotelName"
+                name="hotelName"
+                defaultValue={state.data.hotelName}
                 control={control}
-                placeholder="00.00"
+                placeholder="전시 장소를 입력해주세요."
                 rules={{
                   required: true,
-                  pattern: /^[0-9]*$/,
+                }}
+              />
+            </FormControl>
+          </Col>
+        </Row>
+        <Row gutter={30}>
+          <Col sm={12}>
+            <FormControl
+              label="기간"
+              htmlFor="hotelName"
+              error={errors.hotelName && <span>이 입력란을 작성해주세요!</span>}
+            >
+              <Controller
+                as={<Input />}
+                id="hotelName"
+                name="hotelName"
+                defaultValue={state.data.hotelName}
+                control={control}
+                placeholder="전시 기간을 입력해주세요."
+                rules={{
+                  required: true,
+                }}
+              />
+            </FormControl>
+          </Col>
+        </Row>
+        <Row gutter={30}>
+          <Col sm={12}>
+            <FormControl
+              label="가격"
+              htmlFor="hotelName"
+              error={errors.hotelName && <span>이 입력란을 작성해주세요!</span>}
+            >
+              <Controller
+                as={<Input />}
+                id="hotelName"
+                name="hotelName"
+                defaultValue={state.data.hotelName}
+                control={control}
+                placeholder="전시 가격을 입력해주세요."
+                rules={{
+                  required: true,
+                }}
+              />
+            </FormControl>
+          </Col>
+        </Row>
+        <Row gutter={30}>
+          <Col sm={12}>
+            <FormControl
+              label="장르"
+              htmlFor="hotelName"
+              error={errors.hotelName && <span>이 입력란을 작성해주세요!</span>}
+            >
+              <Controller
+                as={<Input />}
+                id="hotelName"
+                name="hotelName"
+                defaultValue={state.data.hotelName}
+                control={control}
+                placeholder="전시 장르를 입력해주세요."
+                rules={{
+                  required: true,
+                }}
+              />
+            </FormControl>
+          </Col>
+        </Row>
+        <Row gutter={30}>
+          <Col sm={12}>
+            <FormControl
+              label="작가"
+              htmlFor="hotelName"
+              error={errors.hotelName && <span>이 입력란을 작성해주세요!</span>}
+            >
+              <Controller
+                as={<Input />}
+                id="hotelName"
+                name="hotelName"
+                defaultValue={state.data.hotelName}
+                control={control}
+                placeholder="전시 작가명을 입력해주세요."
+                rules={{
+                  required: true,
                 }}
               />
             </FormControl>
           </Col>
         </Row>
         <FormControl
-          label="Hotel Description"
+          label="전시 소개"
           htmlFor="hotelDescription"
           error={
-            errors.hotelDescription && <span>This field is required!</span>
+            errors.hotelDescription && <span>이 입력란을 작성해주세요!</span>
           }
         >
           <Controller
@@ -122,41 +160,17 @@ const BasicInformation = ({ setStep }) => {
             name="hotelDescription"
             defaultValue={state.data.hotelDescription}
             control={control}
-            placeholder="Tell people about your hotel, room, location & amenities"
+            placeholder="전시 소개글을 입력해주세요."
             rules={{
               required: true,
             }}
-          />
-        </FormControl>
-        <FormControl
-          label="How many guests can your hotel accommodate?"
-          error={errors.guest && <span>This field is required!</span>}
-        >
-          <InputIncDec
-            name="guest"
-            value={quantity.guest}
-            onChange={handleOnChange('guest')}
-            increment={() => handleIncrement('guest')}
-            decrement={() => handleDecrement('guest')}
-          />
-        </FormControl>
-        <FormControl
-          label="How many beds can guests use?"
-          error={errors.bed && <span>This field is required!</span>}
-        >
-          <InputIncDec
-            name="bed"
-            value={quantity.bed}
-            onChange={handleOnChange('bed')}
-            increment={() => handleIncrement('bed')}
-            decrement={() => handleDecrement('bed')}
           />
         </FormControl>
       </FormContent>
       <FormAction>
         <div className="inner-wrapper">
           <Button type="primary" htmlType="submit">
-            Next
+            다음
           </Button>
         </div>
       </FormAction>

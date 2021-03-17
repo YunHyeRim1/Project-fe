@@ -266,6 +266,9 @@ const GlobalStyle = createGlobalStyle`
       z-index: 9999 !important;
       
       .ant-menu {
+        position: absolute;
+        top: 10px;
+        left: 50px;
         padding: 7px 0;
         min-width: 150px;
         border: 0;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const AmenitiesWrapper = styled.div`
-  padding: 29px 0;
+  padding: 100px 0;
 
   .amenities_title {
     margin-bottom: 30px;

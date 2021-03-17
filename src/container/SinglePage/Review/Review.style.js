@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
 
 const ReviewWrapper = styled.div`
-  padding: 29px 0;
+  padding: 100px 0px;
 
   .ant-row {
     margin-bottom: -29px;

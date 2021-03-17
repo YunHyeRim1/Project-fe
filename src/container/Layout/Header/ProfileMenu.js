@@ -36,7 +36,7 @@ const ProfileMenu = ({ avatar, history }) => {
           <NavLink to={AGENT_PROFILE_PAGE}>View Profile</NavLink>
         </Menu.Item>
         <Menu.Item onClick={closeDropdown} key="1">
-          <NavLink to={ADD_HOTEL_PAGE}>Add Hotel</NavLink>
+          <NavLink to={ADD_HOTEL_PAGE}>전시회 등록</NavLink>
         </Menu.Item>
         <Menu.Item onClick={closeDropdown} key="2">
           <NavLink to={AGENT_ACCOUNT_SETTINGS_PAGE}>Account Settings</NavLink>

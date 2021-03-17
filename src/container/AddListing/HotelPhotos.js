@@ -51,13 +51,13 @@ const HotelPhotos = ({ setStep }) => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <FormContent>
         <FormHeader>
-          <Title>Step 2: Hotel Photos</Title>
+          <Title>전시회 등록</Title>
         </FormHeader>
         <FormControl
-          error={errors.hotelPhotos && <span>This field is required!</span>}
+          error={errors.hotelPhotos && <span>이 입력란을 작성해주세요!</span>}
         >
           <DragAndDropUploader
-            name="hotelPhotos"
+            name="포스터"
             value={state.data.hotelPhotos}
             onUploadChange={(data) => setValue('hotelPhotos', data)}
           />
@@ -70,10 +70,10 @@ const HotelPhotos = ({ setStep }) => {
             htmlType="button"
             onClick={() => setStep(1)}
           >
-            <IoIosArrowBack /> Back
+            <IoIosArrowBack /> 뒤로가기
           </Button>
           <Button type="primary" htmlType="submit">
-            Next
+            다음
           </Button>
         </div>
       </FormAction>
