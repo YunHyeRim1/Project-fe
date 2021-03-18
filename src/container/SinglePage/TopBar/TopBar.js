@@ -10,15 +10,15 @@ const topBarMenu = [
   },
   {
     name: '이용정보',
-    target: 'amenities',
-  },
-  {
-    name: '부가정보',
-    target: 'location',
+    target: 'notice',
   },
   {
     name: '이용후기',
     target: 'reviews',
+  },
+  {
+    name: '부가정보',
+    target: 'additional',
   },
 ];
 

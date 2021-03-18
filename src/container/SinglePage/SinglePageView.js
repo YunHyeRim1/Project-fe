@@ -6,19 +6,16 @@ import Container from 'components/UI/Container/Container';
 import Loader from 'components/Loader/Loader';
 import useWindowSize from 'library/hooks/useWindowSize';
 import Description from './Description/Description';
-import Amenities from './Amenities/Amenities';
-import Location from './Location/Location';
 import Review from './Review/Review';
+import Notice from './Notice/Notice';
+import Additional from './Additional/Additional';
 import Reservation from './Reservation/Reservation';
 import BottomReservation from './Reservation/BottomReservation';
 import TopBar from './TopBar/TopBar';
 import SinglePageWrapper, { PostImage } from './SinglePageView.style';
-import PostImageGallery from './ImageGallery/ImageGallery';
 import useDataApi from 'library/hooks/useDataApi';
 import isEmpty from 'lodash/isEmpty';
 import Summary from './Summary/Summary';
-import { Info } from './Summary/Summary.style';
-import { FixedMap } from 'container/Listing/Listing.style';
 
 const SinglePage = ({ match }) => {
   const { href } = useLocation();
@@ -89,8 +86,7 @@ const SinglePage = ({ match }) => {
               rating={rating}
               ratingCount={ratingCount}
             />
-            <Amenities amenities={amenities} />
-            <Location location={data[0]} />
+            <Notice content={content} title={title} />
           </Col>
         </Row>
         <Row gutter={30}>
@@ -100,6 +96,12 @@ const SinglePage = ({ match }) => {
               ratingCount={ratingCount}
               rating={rating}
             />
+          </Col>
+          <Col xl={8} />
+        </Row>
+        <Row gutter={30}>
+          <Col xl={16}>
+            <Additional content={content} title={title} />
           </Col>
           <Col xl={8} />
         </Row>

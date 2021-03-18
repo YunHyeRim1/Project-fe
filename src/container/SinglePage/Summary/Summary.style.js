@@ -38,6 +38,7 @@ export const Info = styled.div`
   }
 
   strong {
+    color: ${themeGet('text.0', '#2C2C2C')};
     padding: 0px 50px 0px 0px;
   }
   

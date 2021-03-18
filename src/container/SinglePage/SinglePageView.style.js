@@ -70,6 +70,7 @@ export const TobBarWrapper = styled.div`
   .sticky-outer-wrapper {
     position: relative;
     top: 130px;
+    margin: 0px 0px 200px;
 
     .sticky-inner-wrapper {
       background-color: ${themeGet('color.1', '#ffffff')};

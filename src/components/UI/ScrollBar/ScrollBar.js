@@ -3,7 +3,7 @@ import { Link } from 'react-scroll';
 import Container from '../Container/Container';
 import { Wrapper, InnerWrapper } from './ScrollBar.style';
 
-export default function TopBar({ menu = [], other, height, className }) {
+export default function TopBar({ menu = [], height, className }) {
   const addAllClasses = ['scrollbar'];
   if (className) {
     addAllClasses.push(className);
