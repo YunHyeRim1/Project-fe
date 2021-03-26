@@ -54,11 +54,11 @@ const HotelPhotos = ({ setStep }) => {
           <Title>전시회 등록</Title>
         </FormHeader>
         <FormControl
-          error={errors.hotelPhotos && <span>이 입력란을 작성해주세요!</span>}
+          error={errors.exhbnImage && <span>이 입력란을 작성해주세요!</span>}
         >
           <DragAndDropUploader
             name="포스터"
-            value={state.data.hotelPhotos}
+            value={state.data.exhbnImage}
             onUploadChange={(data) => setValue('hotelPhotos', data)}
           />
         </FormControl>

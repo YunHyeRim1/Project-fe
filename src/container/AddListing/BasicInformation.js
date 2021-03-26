@@ -25,14 +25,13 @@ const BasicInformation = ({ setStep }) => {
           <Col sm={12}>
             <FormControl
               label="제목"
-              htmlFor="hotelName"
-              error={errors.hotelName && <span>이 입력란을 작성해주세요!</span>}
+              htmlFor="exhbnTitle"
+              error={errors.exhbnTitle && <span>이 입력란을 작성해주세요!</span>}
             >
               <Controller
                 as={<Input />}
-                id="hotelName"
-                name="hotelName"
-                defaultValue={state.data.hotelName}
+                id="exhbnTitle"
+                name="exhbnTitle"
                 control={control}
                 placeholder="전시 제목을 입력해주세요."
                 rules={{
@@ -46,16 +45,15 @@ const BasicInformation = ({ setStep }) => {
           <Col sm={12}>
             <FormControl
               label="장소"
-              htmlFor="hotelName"
-              error={errors.hotelName && <span>이 입력란을 작성해주세요!</span>}
+              htmlFor="hallLocation"
+              error={errors.hallLocation && <span>이 입력란을 작성해주세요!</span>}
             >
               <Controller
                 as={<Input />}
-                id="hotelName"
-                name="hotelName"
-                defaultValue={state.data.hotelName}
+                id="hallLocation"
+                name="hallLocation"
                 control={control}
-                placeholder="전시 장소를 입력해주세요."
+                placeholder="전시관을 입력해주세요."
                 rules={{
                   required: true,
                 }}
@@ -66,17 +64,36 @@ const BasicInformation = ({ setStep }) => {
         <Row gutter={30}>
           <Col sm={12}>
             <FormControl
-              label="기간"
-              htmlFor="hotelName"
-              error={errors.hotelName && <span>이 입력란을 작성해주세요!</span>}
+              label="시작기간"
+              htmlFor="startDate"
+              error={errors.startDate && <span>이 입력란을 작성해주세요!</span>}
             >
               <Controller
                 as={<Input />}
-                id="hotelName"
-                name="hotelName"
-                defaultValue={state.data.hotelName}
+                id="startDate"
+                name="startDate"
                 control={control}
-                placeholder="전시 기간을 입력해주세요."
+                placeholder="전시 시작기간을 입력해주세요."
+                rules={{
+                  required: true,
+                }}
+              />
+            </FormControl>
+          </Col>
+        </Row>
+        <Row gutter={30}>
+          <Col sm={12}>
+            <FormControl
+              label="종료기간"
+              htmlFor="endDate"
+              error={errors.endDate && <span>이 입력란을 작성해주세요!</span>}
+            >
+              <Controller
+                as={<Input />}
+                id="endDate"
+                name="endDate"
+                control={control}
+                placeholder="전시 종료기간을 입력해주세요."
                 rules={{
                   required: true,
                 }}
@@ -88,14 +105,13 @@ const BasicInformation = ({ setStep }) => {
           <Col sm={12}>
             <FormControl
               label="가격"
-              htmlFor="hotelName"
-              error={errors.hotelName && <span>이 입력란을 작성해주세요!</span>}
+              htmlFor="exhbnPrice"
+              error={errors.exhbnPrice && <span>이 입력란을 작성해주세요!</span>}
             >
               <Controller
                 as={<Input />}
-                id="hotelName"
-                name="hotelName"
-                defaultValue={state.data.hotelName}
+                id="exhbnPrice"
+                name="exhbnPrice"
                 control={control}
                 placeholder="전시 가격을 입력해주세요."
                 rules={{
@@ -109,14 +125,13 @@ const BasicInformation = ({ setStep }) => {
           <Col sm={12}>
             <FormControl
               label="장르"
-              htmlFor="hotelName"
-              error={errors.hotelName && <span>이 입력란을 작성해주세요!</span>}
+              htmlFor="exhbnGenre"
+              error={errors.exhbnGenre && <span>이 입력란을 작성해주세요!</span>}
             >
               <Controller
                 as={<Input />}
-                id="hotelName"
-                name="hotelName"
-                defaultValue={state.data.hotelName}
+                id="exhbnGenre"
+                name="exhbnGenre"
                 control={control}
                 placeholder="전시 장르를 입력해주세요."
                 rules={{
@@ -130,14 +145,13 @@ const BasicInformation = ({ setStep }) => {
           <Col sm={12}>
             <FormControl
               label="작가"
-              htmlFor="hotelName"
-              error={errors.hotelName && <span>이 입력란을 작성해주세요!</span>}
+              htmlFor="exhbnArtist"
+              error={errors.exhbnArtist && <span>이 입력란을 작성해주세요!</span>}
             >
               <Controller
                 as={<Input />}
-                id="hotelName"
-                name="hotelName"
-                defaultValue={state.data.hotelName}
+                id="exhbnArtist"
+                name="exhbnArtist"
                 control={control}
                 placeholder="전시 작가명을 입력해주세요."
                 rules={{
@@ -149,16 +163,15 @@ const BasicInformation = ({ setStep }) => {
         </Row>
         <FormControl
           label="전시 소개"
-          htmlFor="hotelDescription"
+          htmlFor="exhbnContent"
           error={
-            errors.hotelDescription && <span>이 입력란을 작성해주세요!</span>
+            errors.exhbnContent && <span>이 입력란을 작성해주세요!</span>
           }
         >
           <Controller
             as={<Input.TextArea rows={5} />}
-            id="hotelDescription"
-            name="hotelDescription"
-            defaultValue={state.data.hotelDescription}
+            id="exhbnContent"
+            name="exhbnContent"
             control={control}
             placeholder="전시 소개글을 입력해주세요."
             rules={{

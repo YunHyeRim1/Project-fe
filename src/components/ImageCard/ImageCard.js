@@ -8,7 +8,7 @@ import ImageCardWrapper, {
   Meta,
 } from './ImageCard.style';
 
-const ImageCard = ({ className, imageSrc, title, link, meta }) => {
+const ImageCard = ({ className, imageSrc, title, link, meta, slug, }) => {
   // Add all classs to an array
   const addAllClasses = ['image_card'];
 
@@ -19,7 +19,7 @@ const ImageCard = ({ className, imageSrc, title, link, meta }) => {
 
   return (
     <ImageCardWrapper className={addAllClasses.join(' ')}>
-      <Link to={link}>
+      <Link to={`${link}/${slug}`}>
         <img src={imageSrc} alt={title} />
         <ContentWrapper>
           {title && <Title>{title}</Title>}

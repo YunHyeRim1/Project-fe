@@ -10,6 +10,7 @@ import {
   HOME_PAGE,
   LISTING_POSTS_PAGE,
   SINGLE_POST_PAGE,
+  HALL_DETAIL_PAGE,
   ADD_HOTEL_PAGE,
   AGENT_PROFILE_PAGE,
   AGENT_ACCOUNT_SETTINGS_PAGE,
@@ -69,14 +70,23 @@ const routes = [
     }),
   },
   {
-    path: `${SINGLE_POST_PAGE}/:slug`,
+    path: `${SINGLE_POST_PAGE}/:exhbnNum`,
     component: Loadable({
       loader: () =>
         import(
-          /* webpackChunkName: "SinglePageView" */ './container/SinglePage/SinglePageView'
-        ),
+          /* webpackChunkName: "SinglePageView" */ './container/SinglePage/SinglePageView'),
       loading: Loading,
       modules: ['SinglePageView'],
+    }),
+  },
+  {
+    path: `${HALL_DETAIL_PAGE}/:hallNum`,
+    component: Loadable({
+      loader: () =>
+        import(
+          /* webpackChunkName: "HallPage" */ './container/HallPage/HallPage'),
+      loading: Loading,
+      modules: ['HallPage'],
     }),
   },
   {
@@ -173,7 +183,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
  *
  */
 
-const Routes = () => {
+const App = () => {
   return (
     <Layout>
       <Switch>
@@ -191,4 +201,4 @@ const Routes = () => {
   );
 };
 
-export default Routes;
+export default App;

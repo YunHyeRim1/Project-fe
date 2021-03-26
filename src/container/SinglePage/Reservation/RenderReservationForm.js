@@ -50,15 +50,12 @@ const RenderReservationForm = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(
-      `Start Date: ${formState.startDate}\nEnd Date: ${formState.endDate}\nRooms: ${formState.room}\nGuests: ${formState.guest}`
-    );
   };
 
   return (
     <ReservationFormWrapper className="form-container" onSubmit={handleSubmit}>
       <FieldWrapper>
-        <HtmlLabel htmlFor="dates" content="Dates" />
+        <HtmlLabel htmlFor="dates" content="날짜" />
         <DatePickerRange
           startDateId="checkin-Id"
           endDateId="checkout-id"
@@ -70,39 +67,39 @@ const RenderReservationForm = () => {
         />
       </FieldWrapper>
       <FieldWrapper>
-        <HtmlLabel htmlFor="guests" content="Guests" />
+        <HtmlLabel htmlFor="guests" content="예매" />
         <ViewWithPopup
           key={200}
           noView={true}
           className={formState.room || formState.guest ? 'activated' : ''}
           view={
             <Button type="default">
-              <span>Room {formState.room > 0 && `: ${formState.room}`}</span>
+              <span>대인 {formState.adult > 0 && `: ${formState.adult}`}</span>
               <span>-</span>
-              <span>Guest{formState.guest > 0 && `: ${formState.guest}`}</span>
+              <span>소인 {formState.children > 0 && `: ${formState.children}`}</span>
             </Button>
           }
           popup={
             <RoomGuestWrapper>
               <ItemWrapper>
-                <strong>Room</strong>
+                <strong>대인</strong>
                 <InputIncDec
-                  id="room"
-                  increment={() => handleIncrement('room')}
-                  decrement={() => handleDecrement('room')}
-                  onChange={(e) => handleIncDecOnChnage(e, 'room')}
-                  value={formState.room}
+                  id="adult"
+                  increment={() => handleIncrement('adult')}
+                  decrement={() => handleDecrement('adult')}
+                  onChange={(e) => handleIncDecOnChnage(e, 'adult')}
+                  value={formState.adult}
                 />
               </ItemWrapper>
 
               <ItemWrapper>
-                <strong>Guest</strong>
+                <strong>소인</strong>
                 <InputIncDec
-                  id="guest"
-                  increment={() => handleIncrement('guest')}
-                  decrement={() => handleDecrement('guest')}
-                  onChange={(e) => handleIncDecOnChnage(e, 'guest')}
-                  value={formState.guest}
+                  id="children"
+                  increment={() => handleIncrement('children')}
+                  decrement={() => handleDecrement('children')}
+                  onChange={(e) => handleIncDecOnChnage(e, 'children')}
+                  value={formState.children}
                 />
               </ItemWrapper>
             </RoomGuestWrapper>

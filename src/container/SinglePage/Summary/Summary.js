@@ -13,6 +13,7 @@ import {
 } from 'components/SocialShare/SocialShare';
 import { Button, Menu, Dropdown } from 'antd';
 import { ButtonGroup } from '../SinglePageView.style';
+import useDataApi from 'library/hooks/useDataApi';
 
 const SocialShareMenu = (props) => {
     return (
@@ -57,16 +58,20 @@ const SocialShareMenu = (props) => {
   };
 
 const Summary = (props) => {
-    const {   title,
-        rating,
-        ratingCount,
-        titleStyle,
-        shareURL, author, media, }
+    const {  
+      exhbnTitle,
+      exhbnImage,
+      title,
+      rating,
+      ratingCount,
+      titleStyle,
+      shareURL, author, media, }
 = props;
-    return (
+
+return (
         <SummaryWrapper>
             <PosterImage>
-                <img src="/images/test-image.jpg" alt="" />
+                <img src={exhbnImage} alt="" />
                 <SideButtons
                     media={media}
                     author={author}
@@ -75,7 +80,7 @@ const Summary = (props) => {
                 />
             </PosterImage>
             <Info>
-                <Heading as="h2" content={title} {...titleStyle} />
+                <Heading as="h2" content={exhbnTitle} {...titleStyle} />
                 <RatingMeta>
                     <Rating rating={rating} ratingCount={ratingCount} type="bulk" />
                 </RatingMeta>
@@ -87,6 +92,7 @@ const Summary = (props) => {
                     <li><strong>작가</strong> <span>caswcdkvje</span></li>
                 </ul>
             </Info>
+           
         </SummaryWrapper>
     );
 };

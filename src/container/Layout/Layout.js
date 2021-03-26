@@ -10,7 +10,7 @@ import {
   AGENT_PROFILE_PAGE,
   AGENT_ACCOUNT_SETTINGS_PAGE,
   ADD_HOTEL_PAGE,
-  PRICING_PLAN_PAGE,
+  HALL_DETAIL_PAGE,
   SINGLE_POST_PAGE,
   PRIVACY_PAGE,
   CHANGE_PASSWORD_PAGE,
@@ -39,7 +39,7 @@ export default withRouter(function Layout({ children, location }) {
           <Header />
           <Content>{children}</Content>
           {location.pathname === LISTING_POSTS_PAGE ||
-          location.pathname === PRICING_PLAN_PAGE ||
+          location.pathname === HALL_DETAIL_PAGE ||
           location.pathname === ADD_HOTEL_PAGE ||
           location.pathname === AGENT_PROFILE_PAGE ||
           location.pathname === CHANGE_PASSWORD_PAGE ||

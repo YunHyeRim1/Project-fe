@@ -11,7 +11,7 @@ import GlideCarousel, {
   GlideSlide,
 } from 'components/UI/GlideCarousel/GlideCarousel';
 import useDataApi from 'library/hooks/useDataApi';
-import { LISTING_POSTS_PAGE } from 'settings/constant';
+import { LISTING_POSTS_PAGE, SINGLE_POST_PAGE, HALL_DETAIL_PAGE } from 'settings/constant';
 import LocationWrapper, { CarouselSection } from './Location.style';
 const carouselOptions = {
   type: 'carousel',
@@ -42,14 +42,14 @@ const carouselOptions = {
 };
 
 const LocationGrid = () => {
-  const { data } = useDataApi('/data/location.json');
+  const { data } = useDataApi('http://localhost:8080/halls/all');
 
   return (
     <LocationWrapper>
       <Container fluid={true}>
         <SectionTitle
-          title={<Heading content="Explore Destinations" />}
-          link={<TextLink link={LISTING_POSTS_PAGE} content="Show all" />}
+          title={<Heading content="전시관별 전시보기" />}
+          link={<TextLink link={LISTING_POSTS_PAGE} content="모두보기" />}
         />
 
         <CarouselSection>
@@ -64,10 +64,10 @@ const LocationGrid = () => {
                 {data.map((post, index) => (
                   <GlideSlide key={index}>
                     <ImageCard
-                      link="listing"
-                      imageSrc={post.locationImage.url}
-                      title={post.city}
-                      meta={`${post.numberOfPost} Hotels`}
+                      link="halls"
+                      imageSrc={post.hallImage}
+                      title={post.hallName}
+                      meta={`Show list`}
                     />
                   </GlideSlide>
                 ))}

@@ -1,5 +1,5 @@
 import React, { useState, Fragment, useEffect } from 'react';
-import axios from "axios";
+import axios from 'axios';
 import Sticky from 'react-stickynode';
 import Toolbar from 'components/UI/Toolbar/Toolbar';
 import { Checkbox } from 'antd';
@@ -17,10 +17,10 @@ const Listing = ({ location, history }) => {
 
   const [exhbnList, setExhbnList] = useState([])
 
-  let url = '/data/hotel.json';
+  let url = 'http://localhost:8080/exhbns/all';
   const { width } = useWindowSize();
   const [showMap, setShowMap] = useState(false);
-  const { data, loading, loadMoreData, total, limit } = useDataApi(url);
+  const { data, loading, loadMoreData, total, limit } = useDataApi('http://localhost:8080/exhbns/all');
   let columnWidth = [1 / 1, 1 / 2, 1 / 3, 1 / 4, 1 / 5];
   if (location.search) {
     url += location.search;
@@ -32,30 +32,9 @@ const Listing = ({ location, history }) => {
     setShowMap((showMap) => !showMap);
   };
 
-  const URL = '/exhbns/all'
-  useEffect(() => {
-    axios.get(URL, )
-    .then((resp) => {
-      alert('성공')
-      setExhbnList(resp.data)
-    })
-    .catch((err) => {
-      alert('실패')
-      throw err;
-    })
-  }, [])
 
   return (
     <>
-    <ul>
-      {exhbnList.map(i => (
-        <li
-          key = {i.exhbnNum}
-        >
-          {i.exhbnTitle}
-        </li>
-      ))}
-    </ul>
     <ListingWrapper>
       <Sticky top={82} innerZ={999} activeClass="isHeaderSticky">
         <Toolbar

@@ -9,7 +9,7 @@ import useWindowSize from 'library/hooks/useWindowSize';
 import useDataApi from 'library/hooks/useDataApi';
 import { LISTING_POSTS_PAGE, SINGLE_POST_PAGE } from 'settings/constant';
 const TopHotelsGrid = () => {
-  const { data, loading } = useDataApi('/data/top-hotel.json');
+  const { data, loading } = useDataApi('http://localhost:8080/exhbns/all');
   const { width } = useWindowSize();
 
   let posts = data;
@@ -35,7 +35,7 @@ const TopHotelsGrid = () => {
   return (
     <Container fluid={true}>
       <SectionTitle
-        title={<Heading content="Travelers’ Choice: Top hotels" />}
+        title={<Heading content="취향저격: 추천 전시" />}
         link={<TextLink link={LISTING_POSTS_PAGE} content="Show all" />}
       />
 

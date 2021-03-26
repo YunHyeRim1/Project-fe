@@ -12,7 +12,7 @@ import Additional from './Additional/Additional';
 import Reservation from './Reservation/Reservation';
 import BottomReservation from './Reservation/BottomReservation';
 import TopBar from './TopBar/TopBar';
-import SinglePageWrapper, { PostImage } from './SinglePageView.style';
+import SinglePageWrapper from './SinglePageView.style';
 import useDataApi from 'library/hooks/useDataApi';
 import isEmpty from 'lodash/isEmpty';
 import Summary from './Summary/Summary';
@@ -22,14 +22,15 @@ const SinglePage = ({ match }) => {
   const [isModalShowing, setIsModalShowing] = useState(false);
   const { width } = useWindowSize();
 
-  let url = '/data/hotel-single.json';
+  let url = 'http://localhost:8080/exhbns';
   if (!match.params.slug) {
     url += match.params.slug;
   }
-  const { data, loading } = useDataApi(url);
+  const { data, loading } = useDataApi('http://localhost:8080/exhbns/all');
   if (isEmpty(data) || loading) return <Loader />;
   const {
     reviews,
+    exhbnNum,
     rating,
     ratingCount,
     price,
@@ -37,8 +38,11 @@ const SinglePage = ({ match }) => {
     gallery,
     location,
     content,
-    amenities,
     author,
+    exhbnTitle,
+    hallName,
+    exhbnContent,
+    post
   } = data[0];
 
   return (
@@ -47,7 +51,7 @@ const SinglePage = ({ match }) => {
         <Row gutter={30}>
           <Col xl={16}>
             <Summary
-              title={title}
+              title={exhbnTitle}
               rating={rating}
               ratingCount={ratingCount}
               shareURL={href} media={gallery}
@@ -80,9 +84,9 @@ const SinglePage = ({ match }) => {
         <Row gutter={30} id="reviewSection" style={{ marginTop: 30 }}>
           <Col xl={16}>
             <Description
-              content={content}
-              title={title}
-              location={location}
+              content={exhbnContent}
+              title={exhbnTitle}
+              location={hallName}
               rating={rating}
               ratingCount={ratingCount}
             />

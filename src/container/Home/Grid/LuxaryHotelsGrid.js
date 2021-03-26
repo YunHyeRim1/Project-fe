@@ -13,7 +13,7 @@ import {
 } from '../../../settings/constant';
 
 const LuxaryHotelsGrid = () => {
-  const { data, loading } = useDataApi('/data/hotel.json');
+  const { data, loading } = useDataApi('http://localhost:8080/exhbns/all');
   const { width } = useWindowSize();
 
   let posts = data;
@@ -39,7 +39,7 @@ const LuxaryHotelsGrid = () => {
   return (
     <Container fluid={true}>
       <SectionTitle
-        title={<Heading content="Best Rated: Luxary hotels" />}
+        title={<Heading content="TOP10: 인기 전시" />}
         link={<TextLink link={LISTING_POSTS_PAGE} content="Show all" />}
       />
 
