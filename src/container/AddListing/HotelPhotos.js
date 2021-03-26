@@ -10,7 +10,7 @@ import { FormHeader, Title, FormContent, FormAction } from './AddListing.style';
 
 const HotelPhotos = ({ setStep }) => {
   const { register, errors, setValue, handleSubmit } = useForm({
-    defaultValues: {
+ /*    defaultValues: {
       hotelPhotos: [
         {
           uid: '1',
@@ -34,7 +34,7 @@ const HotelPhotos = ({ setStep }) => {
             'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
         },
       ],
-    },
+    }, */
   });
 
   const { action, state } = useStateMachine(AddListingAction);

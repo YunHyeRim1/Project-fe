@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import HallPage from '../HallPage';
+import HallDetail from '../HallDetail';
 
 const menuList = {
-    0: <HallPage />,
-    1: <HallPage />,
+    0: <HallDetail />,
+    1: <HallDetail />,
   };
 
 class VerticalTab extends React.Component {

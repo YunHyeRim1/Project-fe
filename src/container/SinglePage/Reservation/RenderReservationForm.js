@@ -10,13 +10,15 @@ import ReservationFormWrapper, {
   RoomGuestWrapper,
   ItemWrapper,
 } from './Reservation.style.js';
+import { Link } from 'react-router-dom'
+import { BOOKING_PAGE } from 'settings/constant'
 
-const RenderReservationForm = () => {
+const RenderReservationForm = ( props ) => {
   const [formState, setFormState] = useState({
     startDate: null,
     endDate: null,
-    room: 0,
-    guest: 0,
+    adult: 0,
+    children: 0,
   });
 
   const handleIncrement = (type) => {
@@ -107,9 +109,11 @@ const RenderReservationForm = () => {
         />
       </FieldWrapper>
       <FormActionArea>
+        <Link to={`${BOOKING_PAGE}/${props.number}`}>
         <Button htmlType="submit" type="primary">
           예매하기
         </Button>
+        </Link>
       </FormActionArea>
     </ReservationFormWrapper>
   );

@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { useLocation } from 'library/hooks/useLocation';
 import Sticky from 'react-stickynode';
 import { Row, Col, Modal, Button } from 'antd';
@@ -8,30 +8,41 @@ import useWindowSize from 'library/hooks/useWindowSize';
 import useDataApi from 'library/hooks/useDataApi';
 import isEmpty from 'lodash/isEmpty';
 import Hall from './Hall/Hall';
-import HallPageWrapper from './HallPage.style';
+import HallPageWrapper from './HallDetail.style';
+import axios from 'axios'
 
-const HallPage = ({ match }) => {
+const HallDetail = ({ match }) => {
   const { href } = useLocation();
   const [isModalShowing, setIsModalShowing] = useState(false);
   const { width } = useWindowSize();
+  const [ props ] = useState([])
+  const [ hallDetail, sethallDetail ] = useState([])
 
-  let url = '/data/hotel-single.json';
-  if (!match.params.slug) {
-    url += match.params.slug;
-  }
-  const { data, loading } = useDataApi('http://localhost:8080/halls/all');
-  if (isEmpty(data) || loading) return <Loader />;
+  const URL = `http://localhost:8080/halls/find/`
+
+  useEffect(() => {
+    axios.get(URL+match.params.hallNum)
+    .then(resp => {
+      sethallDetail(resp.data)
+    })
+    .catch(err => {
+      alert(`전시관 진입 실패`)
+      throw err;
+    })
+  }, [])
+
+  if (isEmpty(hallDetail)) return <Loader />;
   const {
     title,
     content,
-  } = data[0];
+  } = props;
 
   return (
     <HallPageWrapper>
       <Container>
         
         <Hall
-            title={title}
+            title={hallDetail.hallName}
             content={content}
         />
 
@@ -40,4 +51,4 @@ const HallPage = ({ match }) => {
   );
 };
 
-export default HallPage;
+export default HallDetail;

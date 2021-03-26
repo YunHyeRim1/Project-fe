@@ -1,12 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { TopHotelsGrid, LuxaryHotelsGrid } from './Grid';
 import SearchArea from './Search/Search';
 import LocationGrid from './Location/Location';
 import { LayoutContext } from 'context/LayoutProvider';
 import { Waypoint } from 'react-waypoint';
+import axios from 'axios'
 
-const Home = () => {
+const Home = ({ match }) => {
   const [, dispatch] = useContext(LayoutContext);
+ 
   return (
     <>
       <SearchArea />

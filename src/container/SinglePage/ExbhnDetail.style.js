@@ -102,24 +102,6 @@ export const TobBarWrapper = styled.div`
             }
           }
         }
-
-
-        .scrollbar_right {
-          padding-right: 25px;
-
-          button,
-          .ant-btn {
-            @media (max-width: 767px) {
-              min-width: 50px;
-              svg {
-                margin-right: 0;
-              }
-              > span {
-                display: none;
-              }
-            }
-          }
-        }
       }
     }
 
@@ -130,105 +112,6 @@ export const TobBarWrapper = styled.div`
           box-shadow: 0 2px 5px -2px rgba(0, 0, 0, 0);
         }
       }
-    }
-  }
-`;
-
-export const ButtonGroup = styled.div`
-  button,
-  button.ant-btn {
-    box-shadow: none;
-    border: 0;
-    margin: 20px 55px;
-    height: 5px;
-    min-width: 90px;
-    padding: 0px;
-    color: ${themeGet('text.0', '#2C2C2C')};
-    font-size: 14px;
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.2s ease;
-    svg {
-      width: 20.309px;
-      height: 15.537px;
-      margin-right: 10px;
-      path {
-        fill: transparent;
-        stroke: ${themeGet('text.0', '#2C2C2C')};
-        stroke-width: 1.2px;
-      }
-    }
-
-    &.active {
-      svg {
-        path {
-          stroke: ${themeGet('color.4', '#FC5C63')};
-          fill: ${themeGet('color.4', '#FC5C63')};
-        }
-      }
-    }
-
-    &:focus {
-      outline: none;
-    }
-    
-    &:after {
-      display: none;
-    }
-
-    &:first-child {
-      margin-left: 0px;
-      svg {
-        position: relative;
-        top: 0px;
-        path {
-          stroke-width: 1.5px;
-        }
-      }
-    }
-
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-`;
-
-export const PostImage = styled.div`
-  height: 600px;
-  position: relative;
-
-  @media (max-width: 767px) {
-    height: 406px;
-  }
-
-  img.absolute {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    object-fit: cover;
-  }
-
-  .image_gallery_button {
-    background: ${themeGet('color.1', '#ffffff')};
-    border-radius: 3px;
-    font-size: 15px;
-    font-weight: 700;
-    color: #2c2c2c;
-    border: 0;
-    height: 37px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
-    position: absolute;
-    bottom: 30px;
-    right: 25px;
-
-    &:hover,
-    &:focus {
-      background: ${themeGet('color.2', '#F7F7F7')};
-      color: ${themeGet('text.0', '#2C2C2C')};
     }
   }
 `;

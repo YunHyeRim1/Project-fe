@@ -2,7 +2,7 @@ import React from 'react';
 import SectionGrid from 'components/SectionGrid/SectionGrid';
 import { PostPlaceholder } from 'components/UI/ContentLoader/ContentLoader';
 import useDataApi from 'library/hooks/useDataApi';
-import { SINGLE_POST_PAGE } from 'settings/constant';
+import { EXHBN_DETAIL_PAGE } from 'settings/constant';
 
 const AgentItemLists = () => {
   const { data, loadMoreData, loading, total } = useDataApi('/data/agent.json');
@@ -10,7 +10,7 @@ const AgentItemLists = () => {
 
   return (
     <SectionGrid
-      link={SINGLE_POST_PAGE}
+      link={EXHBN_DETAIL_PAGE}
       data={listed_post}
       loading={loading}
       limit={8}

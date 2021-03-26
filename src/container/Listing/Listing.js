@@ -10,28 +10,16 @@ import ListingMap from './ListingMap';
 import FilterDrawer from 'components/Search/MobileSearchView';
 import useWindowSize from 'library/hooks/useWindowSize';
 import useDataApi from 'library/hooks/useDataApi';
-import { SINGLE_POST_PAGE } from 'settings/constant';
+import { EXHBN_DETAIL_PAGE } from 'settings/constant';
 import ListingWrapper, { PostsWrapper, ShowMapCheckbox } from './Listing.style';
 
 const Listing = ({ location, history }) => {
 
   const [exhbnList, setExhbnList] = useState([])
 
-  let url = 'http://localhost:8080/exhbns/all';
   const { width } = useWindowSize();
-  const [showMap, setShowMap] = useState(false);
   const { data, loading, loadMoreData, total, limit } = useDataApi('http://localhost:8080/exhbns/all');
   let columnWidth = [1 / 1, 1 / 2, 1 / 3, 1 / 4, 1 / 5];
-  if (location.search) {
-    url += location.search;
-  }
-  if (showMap) {
-    columnWidth = [1 / 1, 1 / 2, 1 / 2, 1 / 2, 1 / 3];
-  }
-  const handleMapToggle = () => {
-    setShowMap((showMap) => !showMap);
-  };
-
 
   return (
     <>
@@ -45,20 +33,13 @@ const Listing = ({ location, history }) => {
               <FilterDrawer history={history} location={location} />
             )
           }
-          right={
-            <ShowMapCheckbox>
-              <Checkbox defaultChecked={false} onChange={handleMapToggle}>
-                Show map
-              </Checkbox>
-            </ShowMapCheckbox>
-          }
         />
       </Sticky>
 
       <Fragment>
-        <PostsWrapper className={width > 767 && showMap ? 'col-12' : 'col-24'}>
+        <PostsWrapper className={width > 767}>
           <SectionGrid
-            link={SINGLE_POST_PAGE}
+            link={EXHBN_DETAIL_PAGE}
             columnWidth={columnWidth}
             data={data}
             totalItem={total.length}
@@ -69,7 +50,6 @@ const Listing = ({ location, history }) => {
           />
         </PostsWrapper>
 
-        {showMap && <ListingMap />}
       </Fragment>
     </ListingWrapper>
     </>

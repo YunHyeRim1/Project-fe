@@ -13,6 +13,7 @@ import GlideCarousel, {
 import useDataApi from 'library/hooks/useDataApi';
 import { LISTING_POSTS_PAGE, SINGLE_POST_PAGE, HALL_DETAIL_PAGE } from 'settings/constant';
 import LocationWrapper, { CarouselSection } from './Location.style';
+
 const carouselOptions = {
   type: 'carousel',
   perView: 5,
@@ -64,7 +65,7 @@ const LocationGrid = () => {
                 {data.map((post, index) => (
                   <GlideSlide key={index}>
                     <ImageCard
-                      link="halls"
+                      link={HALL_DETAIL_PAGE}
                       imageSrc={post.hallImage}
                       title={post.hallName}
                       meta={`Show list`}

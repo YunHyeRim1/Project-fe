@@ -243,6 +243,7 @@ export const FormAction = styled.div`
   button {
     font-size: 15px;
     font-weight: 700;
+    color: #ffffff;
     height: 47px;
     border: 0;
     border-radius: 3px;
@@ -260,7 +261,8 @@ export const FormAction = styled.div`
       outline: 0;
       box-shadow: none;
       opacity: 0.9;
-      background-color: ${themeGet('primary.0', '#616266')};
+      color: #ffffff;
+      background-color: #000000;
     }
     &.back-btn {
       background-color: transparent;

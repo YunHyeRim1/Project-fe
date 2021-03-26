@@ -4,7 +4,10 @@ export const AGENTS_PAGE = '/agents';
 
 // Listing Single Page Section
 export const LISTING_POSTS_PAGE = '/listing';
-export const SINGLE_POST_PAGE = '/exhbns';
+export const BOOKING_PAGE = '/booking';
+export const BOOKING_LIST_PAGE = '/bookingList';
+export const BOOKING_DETAIL_PAGE = '/bookingDetail';
+export const EXHBN_DETAIL_PAGE = '/exhbns';
 export const HALL_DETAIL_PAGE = '/halls';
 
 // Agent Profile Page Section
@@ -21,6 +24,7 @@ export const AGENT_PROFILE_CONTACT = '/contact';
 export const PRICING_PLAN_PAGE = '/pricing-plan';
 export const PRIVACY_PAGE = '/privacy';
 export const ADD_HOTEL_PAGE = '/add-hotel';
+export const ADD_EXHBN_PAGE = '/add-exhbn';
 
 // Login / Registration Page
 export const LOGIN_PAGE = '/sign-in';

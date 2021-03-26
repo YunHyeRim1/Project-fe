@@ -37,10 +37,14 @@ const responsive = {
 const PostGrid = ({
   exhbnTitle,
   rating,
-  hallLocation,
+  exhbnPrice,
   ratingCount,
   exhbnImage,
+  link,
   exhbnNum,
+  hallLocation,
+  startDate,
+  endDate
 }) => {
   return (
     <GridCard
@@ -52,8 +56,9 @@ const PostGrid = ({
           }}
         />
       }
+      title={<TextLink link={`exhbns/${exhbnNum}`} content={exhbnTitle}/>}
       location={`${hallLocation}`}
-      title={<TextLink link={`exhbns/${exhbnNum}`} content={exhbnTitle} />}
+      price={`${startDate} ~ ${endDate}`}
       rating={<Rating rating={rating} ratingCount={ratingCount} type="bulk" />}
       viewDetailsBtn={
         <TextLink
@@ -91,6 +96,7 @@ const PostGrid = ({
               position: 'relative',
             }}
           />
+
       </Carousel>
     </GridCard>
   );

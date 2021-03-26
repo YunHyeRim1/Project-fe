@@ -267,8 +267,7 @@ const GlobalStyle = createGlobalStyle`
       
       .ant-menu {
         position: absolute;
-        top: 10px;
-        left: 50px;
+        left: 60px;
         padding: 7px 0;
         min-width: 150px;
         border: 0;
@@ -284,7 +283,7 @@ const GlobalStyle = createGlobalStyle`
             padding: 15px 20px;
             color: ${themeGet('text.0', '#2C2C2C')};
             svg {
-              margin-right: 8px;
+              margin-left: 5px;
             }
           }
 

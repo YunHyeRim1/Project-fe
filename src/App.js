@@ -9,13 +9,14 @@ import {
   FORGET_PASSWORD_PAGE,
   HOME_PAGE,
   LISTING_POSTS_PAGE,
-  SINGLE_POST_PAGE,
+  EXHBN_DETAIL_PAGE,
   HALL_DETAIL_PAGE,
   ADD_HOTEL_PAGE,
   AGENT_PROFILE_PAGE,
   AGENT_ACCOUNT_SETTINGS_PAGE,
   PRIVACY_PAGE,
   PRICING_PLAN_PAGE,
+  ADD_EXHBN_PAGE,
 } from './settings/constant';
 
 /**
@@ -70,23 +71,13 @@ const routes = [
     }),
   },
   {
-    path: `${SINGLE_POST_PAGE}/:exhbnNum`,
+    path: `${EXHBN_DETAIL_PAGE}/:exhbnNum`,
     component: Loadable({
       loader: () =>
         import(
-          /* webpackChunkName: "SinglePageView" */ './container/SinglePage/SinglePageView'),
+          /* webpackChunkName: "ExbhnDetail" */ './container/SinglePage/ExbhnDetail'),
       loading: Loading,
-      modules: ['SinglePageView'],
-    }),
-  },
-  {
-    path: `${HALL_DETAIL_PAGE}/:hallNum`,
-    component: Loadable({
-      loader: () =>
-        import(
-          /* webpackChunkName: "HallPage" */ './container/HallPage/HallPage'),
-      loading: Loading,
-      modules: ['HallPage'],
+      modules: ['ExbhnDetail'],
     }),
   },
   {
@@ -110,6 +101,16 @@ const routes = [
     }),
   },
   {
+    path: HALL_DETAIL_PAGE,
+    component: Loadable({
+      loader: () =>
+        import(
+          /* webpackChunkName: "HallDetail" */ './container/HallPage/HallDetail'),
+      loading: Loading,
+      modules: ['HallDetail'],
+    }),
+  },
+  {
     path: PRIVACY_PAGE,
     component: Loadable({
       loader: () =>
@@ -125,6 +126,17 @@ const routes = [
         import(/* webpackChunkName: "Pricing" */ './container/Pricing/Pricing'),
       loading: Loading,
       modules: ['Pricing'],
+    }),
+  },
+  {
+    path: ADD_HOTEL_PAGE,
+    component: Loadable({
+      loader: () =>
+        import(
+          /* webpackChunkName: "AddExhbn" */ './container/AddListing/AddExhbn'
+        ),
+      loading: Loading,
+      modules: ['AddExhbn'],
     }),
   },
 ];
@@ -190,7 +202,7 @@ const App = () => {
         {routes.map(({ path, component, exact = false }) => (
           <Route key={path} path={path} exact={exact} component={component} />
         ))}
-        <ProtectedRoute path={ADD_HOTEL_PAGE} component={AddListing} />
+        <ProtectedRoute path={ADD_HOTEL_PAGE} component={ADD_HOTEL_PAGE} />
         <ProtectedRoute
           path={AGENT_ACCOUNT_SETTINGS_PAGE}
           component={AgentAccountSettingsPage}

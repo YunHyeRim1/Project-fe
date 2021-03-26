@@ -6,13 +6,13 @@ import Text from 'components/UI/Text/Text';
 import TextLink from 'components/UI/TextLink/TextLink';
 import RenderReservationForm from './RenderReservationForm';
 
-const CardHeader = ({ priceStyle, pricePeriodStyle, linkStyle }) => {
+const CardHeader = ({ price, priceStyle, pricePeriodStyle, linkStyle }) => {
   return (
     <Fragment>
       <Heading
         content={
           <Fragment>
-            7,000원 <Text as="span" content="/ 1매" {...pricePeriodStyle} />
+            {price} <Text as="span" content="/ 1매" {...pricePeriodStyle} />
           </Fragment>
         }
         {...priceStyle}
@@ -21,16 +21,14 @@ const CardHeader = ({ priceStyle, pricePeriodStyle, linkStyle }) => {
   );
 };
 
-export default function Reservation() {
+const Reservation = ( props ) => {
   return (
     <Card
       className="reservation_sidebar"
-      header={<CardHeader />}
-      content={<RenderReservationForm />}
+      header={<CardHeader price = {props.price} />}
+      content={<RenderReservationForm number={props.number}/>}
       footer={
-        <p>
-          Special offers available. <TextLink to="/#1" content="See details" />
-        </p>
+        <button></button>
       }
     />
   );
@@ -58,3 +56,5 @@ CardHeader.defaultProps = {
     color: '#616266',
   },
 };
+
+export default Reservation;

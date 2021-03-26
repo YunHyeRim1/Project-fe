@@ -6,9 +6,9 @@ import Text from 'components/UI/Text/Text';
 import DescriptionWrapper from './Description.style';
 
 const Description = ({
-  exhbnTitle,
-  hallName,
-  exhbnContent,
+  title,
+  location,
+  content,
   titleStyle,
   locationMetaStyle,
   contentStyle,
@@ -17,9 +17,9 @@ const Description = ({
   return (
     <Element name="overview" className="overview">
       <DescriptionWrapper>
-        <Heading as="h2" content={`${exhbnTitle}`} {...titleStyle} />
-        <Text content={hallName} {...locationMetaStyle} />
-        <Text content={exhbnContent} {...contentStyle} />
+        <Heading as="h2" content={title} {...titleStyle} />
+        <Text content={location} {...locationMetaStyle} />
+        <Text content={content} {...contentStyle} />
       </DescriptionWrapper>
     </Element>
   );

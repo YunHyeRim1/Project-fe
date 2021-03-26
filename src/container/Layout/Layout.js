@@ -11,7 +11,7 @@ import {
   AGENT_ACCOUNT_SETTINGS_PAGE,
   ADD_HOTEL_PAGE,
   HALL_DETAIL_PAGE,
-  SINGLE_POST_PAGE,
+  EXHBN_DETAIL_PAGE,
   PRIVACY_PAGE,
   CHANGE_PASSWORD_PAGE,
   FORGET_PASSWORD_PAGE,
@@ -24,7 +24,7 @@ const { Content } = LayoutWrapper;
 
 export default withRouter(function Layout({ children, location }) {
   const { width } = useWindowSize();
-  const singlePageUrlFromConst = SINGLE_POST_PAGE.split('/');
+  const singlePageUrlFromConst = EXHBN_DETAIL_PAGE.split('/');
   const singlePageUrlFormLocation = location.pathname.split('/');
 
   return (

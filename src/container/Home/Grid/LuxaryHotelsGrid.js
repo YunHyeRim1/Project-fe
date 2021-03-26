@@ -9,7 +9,7 @@ import useDataApi from 'library/hooks/useDataApi';
 import SectionTitle from 'components/SectionTitle/SectionTitle';
 import {
   LISTING_POSTS_PAGE,
-  SINGLE_POST_PAGE,
+  EXHBN_DETAIL_PAGE,
 } from '../../../settings/constant';
 
 const LuxaryHotelsGrid = () => {
@@ -44,7 +44,7 @@ const LuxaryHotelsGrid = () => {
       />
 
       <SectionGrid
-        link={SINGLE_POST_PAGE}
+        link={EXHBN_DETAIL_PAGE}
         columnWidth={[1 / 1, 1 / 2, 1 / 3, 1 / 4, 1 / 5]}
         data={posts}
         loading={loading}

@@ -7,6 +7,8 @@ import {
   LISTING_POSTS_PAGE,
   AGENT_PROFILE_PAGE,
   HALL_DETAIL_PAGE,
+  ADD_EXHBN_PAGE,
+  ADD_HOTEL_PAGE,
 } from 'settings/constant';
 
 const MainMenu = ({ className }) => {
@@ -24,8 +26,9 @@ const MainMenu = ({ className }) => {
         <NavLink to={`${HALL_DETAIL_PAGE}`}>Hall</NavLink>
       </Menu.Item>
       <Menu.Item key="3">
-        <NavLink to={`${AGENT_PROFILE_PAGE}`}>MyPage</NavLink>
+        <NavLink to={`${ADD_HOTEL_PAGE}`}>MyPage</NavLink>
       </Menu.Item>
+     
     </Menu>
   );
 };

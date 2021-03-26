@@ -5,7 +5,7 @@ import TextLink from 'components/UI/TextLink/TextLink';
 import { FaWifi, FaCarAlt, FaSwimmer, FaAirFreshener } from 'react-icons/fa';
 import IconCard from 'components/IconCard/IconCard';
 import AmenitiesWrapper, { AmenitiesArea } from './Amenities.style';
-import { TextButton } from '../SinglePageView.style';
+import { TextButton } from '../ExbhnDetail.style';
 import { Element } from 'react-scroll';
 
 const Amenities = ({ titleStyle, linkStyle }) => {
