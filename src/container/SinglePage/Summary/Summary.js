@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import SummaryWrapper, { PosterImage, Info, ButtonGroup, PosterBox, InfoBox } from './Summary.style';
+import SummaryWrapper, { PosterImage, Info, ButtonGroup, PosterBox, InfoBox, ButtonBox } from './Summary.style';
 import Heading from 'components/UI/Heading/Heading';
 import Rating from 'components/UI/Rating/Rating';
 import { RatingMeta } from '../ExbhnDetail.style';
@@ -12,9 +12,10 @@ import {
     PinterestShare,
 } from 'components/SocialShare/SocialShare';
 import { Button, Menu, Dropdown } from 'antd';
-import useDataApi from 'library/hooks/useDataApi';
+import axios from 'axios';
 
-const SocialShareMenu = (props) => {
+const SocialShareMenu = ( props) => {
+
     return (
       <Menu>
         <Menu.Item>
@@ -56,17 +57,16 @@ const SocialShareMenu = (props) => {
     );
   };
  */
-  const Summary = (props) => {
-    const {  
-      title,
-      rating,
-      ratingCount,
-      titleStyle,
-      shareURL, 
-      author, 
-      media,
-      location,
-      start, end, genre, price, artist}
+const Summary = (props) => {
+    
+const {  
+  title,
+  rating,
+  ratingCount,
+  titleStyle,
+  media,
+  location,
+  start, end, genre, price, artist}
 = props;
 
 return (

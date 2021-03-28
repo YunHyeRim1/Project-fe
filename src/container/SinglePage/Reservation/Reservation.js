@@ -27,8 +27,7 @@ const Reservation = ( props ) => {
       className="reservation_sidebar"
       header={<CardHeader price = {props.price} />}
       content={<RenderReservationForm number={props.number}/>}
-      footer={
-        <button></button>
+      footer={<></>
       }
     />
   );

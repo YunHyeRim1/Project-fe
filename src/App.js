@@ -17,6 +17,7 @@ import {
   PRIVACY_PAGE,
   PRICING_PLAN_PAGE,
   ADD_EXHBN_PAGE,
+  UPDATE_EXHBN_PAGE,
 } from './settings/constant';
 
 /**
@@ -137,6 +138,17 @@ const routes = [
         ),
       loading: Loading,
       modules: ['AddExhbn'],
+    }),
+  },
+  {
+    path: `${UPDATE_EXHBN_PAGE}/:exhbnNum`,
+    component: Loadable({
+      loader: () =>
+        import(
+          /* webpackChunkName: "UpdateExhbn" */ './container/AddListing/UpdateExhbn'
+        ),
+      loading: Loading,
+      modules: ['UpdateExhbn'],
     }),
   },
 ];

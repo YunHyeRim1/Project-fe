@@ -9,7 +9,7 @@ import axios from 'axios'
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 
-const AddExhbn = ({ setStep }) => {
+const AddExhbn = ({ setStep, match }) => {
   const { action, state } = useStateMachine(AddListingAction);
   const { control, errors, handleSubmit } = useForm();
   let history = useHistory();
@@ -22,20 +22,30 @@ const AddExhbn = ({ setStep }) => {
   const [ exhbnArtist, setExhbnArtist ] = useState('')
   const [ exhbnContent, setExhbnContent ] = useState('')
   const [ exhbnImage, setExhbnImage ] = useState('')
+  const [ exhbnDetail, setExhbnDetail] = useState({})
 
-  const URL = 'http://localhost:8080/exhbns/save'
+  useEffect(() => {
+    axios.get("http://localhost:8080/exhbns/one/"+match.params.exhbnNum)
+    .then((resp) => {
+      setExhbnDetail(resp.data)
+    })
+    .catch((err) => {
+      alert(`실패`)
+      throw err;
+    })
+  }, [])
 
-  const add = e => {
+  const updateExhbn = e => {
     e.preventDefault()
-    axios.post(URL, {
+    axios.put("http://localhost:8080/exhbns/update/"+match.params.exhbnNum, {
       exhbnTitle, hallLocation, startDate, endDate, exhbnGenre, exhbnPrice, exhbnArtist, exhbnContent, exhbnImage
     })
     .then(resp => {
-      alert(`전시 등록 완료`)
-      history.push('listing')
+      alert(`수정 완료`)
+      window.location.reload()
     })
     .catch(err => {
-      alert(`전시 등록 실패`)
+      alert(`수정 실패`)
       throw err;
     })
   }
@@ -51,9 +61,8 @@ const AddExhbn = ({ setStep }) => {
             <FormControl
               label="전시 포스터"
               htmlFor="exhbnImage"
-              error={errors.exhbnImage && <span>이 입력란을 작성해주세요!</span>}
             >
-            <Input id="exhbnImage" type="file" accept="image/jpeg, image/jpg, image/png" required
+            <Input id="exhbnImage" type="file" accept="image/jpeg, image/jpg, image/png" 
                       onChange = { e => { setExhbnImage(`${e.target.value}`)}}/>     
             </FormControl>
           </Col>
@@ -63,9 +72,8 @@ const AddExhbn = ({ setStep }) => {
             <FormControl
               label="제목"
               htmlFor="exhbnTitle"
-              error={errors.exhbnTitle && <span>이 입력란을 작성해주세요!</span>}
             >
-            <Input id="exhbnTitle" placeholder="전시 제목을 입력해주세요." required
+            <Input name="exhbnTitle" placeholder={exhbnDetail.exhbnTitle} 
                   onChange = { e => { setExhbnTitle(`${e.target.value}`)}}/>
             </FormControl>
           </Col>
@@ -75,9 +83,8 @@ const AddExhbn = ({ setStep }) => {
           <FormControl
               label="장소"
               htmlFor="hallLocation"
-              error={errors.hallLocation && <span>이 입력란을 작성해주세요!</span>}
             >
-            <Input id="hallLocation" placeholder="전시관을 입력해주세요." required
+            <Input name="hallLocation" placeholder={exhbnDetail.hallLocation} 
                   onChange = { e => { setHallLocation(`${e.target.value}`)}}/>  
             </FormControl>
           </Col>
@@ -87,9 +94,8 @@ const AddExhbn = ({ setStep }) => {
             <FormControl
               label="시작 날짜"
               htmlFor="startDate"
-              error={errors.startDate && <span>이 입력란을 작성해주세요!</span>}
             >
-            <Input id="startDate" placeholder="전시 시작 날짜를 입력해주세요." required
+            <Input id="startDate" placeholder={exhbnDetail.startDate} 
                   onChange = { e => { setStartDate(`${e.target.value}`)}}/>    
             </FormControl>
           </Col>
@@ -99,9 +105,8 @@ const AddExhbn = ({ setStep }) => {
             <FormControl
               label="종료 날짜"
               htmlFor="endDate"
-              error={errors.endDate && <span>이 입력란을 작성해주세요!</span>}
             >
-            <Input id="endDate" placeholder="전시 종료 날짜를 입력해주세요." required
+            <Input id="endDate" placeholder={exhbnDetail.endDate} 
                   onChange = { e => { setEndDate(`${e.target.value}`)}}/>    
             </FormControl>
           </Col>
@@ -111,9 +116,8 @@ const AddExhbn = ({ setStep }) => {
             <FormControl
               label="가격"
               htmlFor="exhbnPrice"
-              error={errors.exhbnPrice && <span>이 입력란을 작성해주세요!</span>}
             >
-            <Input id="exhbnPrice" placeholder="전시 가격을 입력해주세요." required
+            <Input id="exhbnPrice" placeholder={exhbnDetail.exhbnPrice} 
                   onChange = { e => { setExhbnPrice(`${e.target.value}`)}}/>    
             </FormControl>
           </Col>
@@ -123,9 +127,8 @@ const AddExhbn = ({ setStep }) => {
             <FormControl
               label="장르"
               htmlFor="exhbnGenre"
-              error={errors.exhbnGenre && <span>이 입력란을 작성해주세요!</span>}
             >
-            <Input id="exhbnGenre" placeholder="전시 장르를 입력해주세요." required
+            <Input id="exhbnGenre" placeholder={exhbnDetail.exhbnGenre} 
                   onChange = { e => { setExhbnGenre(`${e.target.value}`)}}/>   
             </FormControl>
           </Col>
@@ -135,9 +138,8 @@ const AddExhbn = ({ setStep }) => {
             <FormControl
               label="작가"
               htmlFor="exhbnArtist"
-              error={errors.exhbnArtist && <span>이 입력란을 작성해주세요!</span>}
             >
-            <Input id="exhbnArtist" placeholder="작가명을 입력해주세요." required
+            <Input id="exhbnArtist" placeholder={exhbnDetail.exhbnArtist} 
                   onChange = { e => { setExhbnArtist(`${e.target.value}`)}}/>   
             </FormControl>
           </Col>
@@ -145,16 +147,15 @@ const AddExhbn = ({ setStep }) => {
         <FormControl
           label="전시 소개"
           htmlFor="exhbnContent"
-          error={errors.exhbnContent && <span>이 입력란을 작성해주세요!</span>}
         >
-        <Input.TextArea rows={5} id="exhbnContent" placeholder="전시 소개글을 입력해주세요." required
+        <Input.TextArea rows={5} id="exhbnContent" placeholder={exhbnDetail.exhbnContent} 
                   onChange = { e => { setExhbnContent(`${e.target.value}`)}}/>     
         </FormControl>
       </FormContent>
       <FormAction>
         <div className="inner-wrapper">
-          <Button type="submit" htmlType="submit" onClick={ add } >
-            등록하기
+          <Button type="submit" htmlType="submit" onClick={ updateExhbn } >
+            수정하기
           </Button>
         </div>
       </FormAction>

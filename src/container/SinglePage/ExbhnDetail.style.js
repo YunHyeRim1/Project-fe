@@ -8,6 +8,30 @@ const SinglePageWrapper = styled.div`
   }
 `;
 
+export const ButtonBox = styled.div`
+  position: fixed;
+  margin-top: 10px;
+  margin-left: 50px;
+  button {
+    margin: 10px;
+    border: 0;
+    border-radius: 3px;
+    color: white;
+    padding: 14px 25px;
+    font-size: 15px;
+    font-weight: 700;
+    align-items: center;
+    cursor: pointer;
+    background-color: #f44336;;
+    &:hover,
+    &:focus {
+      background: #da190b;
+      outline: 0;
+      box-shadow: none;
+    }
+  }
+`;
+
 export const LocationMeta = styled.div`
   color: ${themeGet('text.1', '#909090')};
   font-size: 13px;

@@ -12,23 +12,35 @@ import Additional from './Additional/Additional';
 import Reservation from './Reservation/Reservation';
 import BottomReservation from './Reservation/BottomReservation';
 import TopBar from './TopBar/TopBar';
-import SinglePageWrapper from './ExbhnDetail.style';
+import SinglePageWrapper, { ButtonBox } from './ExbhnDetail.style';
 import useDataApi from 'library/hooks/useDataApi';
 import isEmpty from 'lodash/isEmpty';
 import Summary from './Summary/Summary';
 import axios from 'axios'
+import { useHistory } from 'react-router';
+import { ADD_EXHBN_PAGE, ADD_HOTEL_PAGE, UPDATE_EXHBN_PAGE } from 'settings/constant';
+import { Link } from 'react-router-dom';
 
 const SinglePage = ({ match }) => {
   const { href } = useLocation();
   const [ isModalShowing, setIsModalShowing ] = useState(false);
   const [ props ] = useState([])
   const { width } = useWindowSize();
-
+  let history = useHistory();
+  const [ exhbnTitle, setExhbnTitle ] = useState('')
+  const [ hallLocation, setHallLocation ] = useState('')
+  const [ startDate, setStartDate ] = useState('')
+  const [ endDate, setEndDate ] = useState('')
+  const [ exhbnGenre, setExhbnGenre ] = useState('')
+  const [ exhbnPrice, setExhbnPrice ] = useState('')
+  const [ exhbnArtist, setExhbnArtist ] = useState('')
+  const [ exhbnContent, setExhbnContent ] = useState('')
+  const [ exhbnImage, setExhbnImage ] = useState('')
   const [ exhbnDetail, setexhbnDetail ] = useState([])
 
-  const URL = `http://localhost:8080/exhbns/find/`
+  const URL = `http://localhost:8080/exhbns/one/`
   
-  useEffect(() => {
+  useEffect(e => {
     axios.get(URL+match.params.exhbnNum)
     .then(resp => {
       setexhbnDetail(resp.data)
@@ -42,16 +54,40 @@ const SinglePage = ({ match }) => {
   // const { data, loading } = useDataApi(`http://localhost:8080/exhbns/all`);
 
   if (isEmpty(exhbnDetail)) return <Loader />;
+
+ 
+  
+  const deleteExhbn = e => {
+    e.preventDefault()
+    axios.delete("http://localhost:8080/exhbns/delete", {
+      data: {exhbnNum: match.params.exhbnNum}
+    })
+    .then(resp => {
+      alert(`삭제 완료`)
+      history.push('/listing')
+    })
+    .catch(err => {
+      alert(`삭제 실패`)
+      throw err;
+    })
+  }
+  
   
   const { rating, ratingCount, author, post } = props;
 
   return (
     <SinglePageWrapper>
       <Container>
+        <Sticky innerZ={10003}>
+      <ButtonBox>
+      <Link to={`${UPDATE_EXHBN_PAGE}/${exhbnDetail.exhbnNum}`}><button className="update-btn" >수정</button></Link>
+        <button className="delete-btn" onClick={ deleteExhbn }>삭제</button>
+      </ButtonBox>
+      </Sticky>
         <Row gutter={30}>
           <Col xl={16}>
             <Summary
-              title={exhbnDetail.exhbnTitle}
+              title={exhbnDetail.exhbnTitle} 
               number={exhbnDetail.exhbnNum}
               location={exhbnDetail.hallLocation}
               genre={exhbnDetail.exhbnGenre}
