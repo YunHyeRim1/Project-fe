@@ -11,7 +11,7 @@ import {
   ADD_HOTEL_PAGE,
 } from 'settings/constant';
 
-const MainMenu = ({ className }) => {
+const MainMenu = ({ className, hallNum }) => {
   return (
     <Menu className={className}>
       <Menu.Item key="0">
@@ -23,7 +23,7 @@ const MainMenu = ({ className }) => {
         <NavLink to={`${LISTING_POSTS_PAGE}`}>Exhibition</NavLink>
       </Menu.Item>
       <Menu.Item key="2">
-        <NavLink to={`${HALL_DETAIL_PAGE}`}>Hall</NavLink>
+        <NavLink to={`${HALL_DETAIL_PAGE}/${1}`}>Hall</NavLink>
       </Menu.Item>
       <Menu.Item key="3">
         <NavLink to={`${ADD_HOTEL_PAGE}`}>MyPage</NavLink>

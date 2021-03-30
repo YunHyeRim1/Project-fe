@@ -10,15 +10,15 @@ const SinglePageWrapper = styled.div`
 
 export const ButtonBox = styled.div`
   position: fixed;
+  right: 15px;
   margin-top: 10px;
-  margin-left: 50px;
   button {
     margin: 10px;
     border: 0;
     border-radius: 3px;
     color: white;
-    padding: 14px 25px;
-    font-size: 15px;
+    padding: 8px 15px;
+    font-size: 13px;
     font-weight: 700;
     align-items: center;
     cursor: pointer;

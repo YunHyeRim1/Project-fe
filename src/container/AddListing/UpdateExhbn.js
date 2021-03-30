@@ -37,6 +37,7 @@ const AddExhbn = ({ setStep, match }) => {
 
   const updateExhbn = e => {
     e.preventDefault()
+    window.confirm("전시를 수정하겠습니까?")
     axios.put("http://localhost:8080/exhbns/update/"+match.params.exhbnNum, {
       exhbnTitle, hallLocation, startDate, endDate, exhbnGenre, exhbnPrice, exhbnArtist, exhbnContent, exhbnImage
     })

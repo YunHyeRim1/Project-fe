@@ -102,7 +102,7 @@ const routes = [
     }),
   },
   {
-    path: HALL_DETAIL_PAGE,
+    path: `${HALL_DETAIL_PAGE}/:hallNum`,
     component: Loadable({
       loader: () =>
         import(

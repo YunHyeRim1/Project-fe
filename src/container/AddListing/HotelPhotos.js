@@ -73,7 +73,7 @@ const HotelPhotos = ({ setStep }) => {
             <IoIosArrowBack /> 뒤로가기
           </Button>
           <Button type="primary" htmlType="submit">
-            다음
+            등록하기
           </Button>
         </div>
       </FormAction>

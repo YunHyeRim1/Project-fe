@@ -1,14 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-
 import ImageCardWrapper, {
   ContentWrapper,
   Title,
   Meta,
 } from './ImageCard.style';
 
-const ImageCard = ({ className, imageSrc, title, link, meta, slug, hallNum }) => {
+const ImageCard = ({ 
+  className, 
+  imageSrc, 
+  title, 
+  link, 
+  meta, 
+  slug, 
+  hallNum,
+}) => {
+  
+  
   // Add all classs to an array
   const addAllClasses = ['image_card'];
 
@@ -19,7 +28,7 @@ const ImageCard = ({ className, imageSrc, title, link, meta, slug, hallNum }) =>
 
   return (
     <ImageCardWrapper className={addAllClasses.join(' ')}>
-      <Link to={`halls/${hallNum}`}>
+       <Link to={`${link}/${slug}`}>
         <img src={imageSrc} alt={title} />
         <ContentWrapper>
           {title && <Title>{title}</Title>}

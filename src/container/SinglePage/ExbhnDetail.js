@@ -20,6 +20,7 @@ import axios from 'axios'
 import { useHistory } from 'react-router';
 import { ADD_EXHBN_PAGE, ADD_HOTEL_PAGE, UPDATE_EXHBN_PAGE } from 'settings/constant';
 import { Link } from 'react-router-dom';
+import { Autocomplete } from '@material-ui/core';
 
 const SinglePage = ({ match }) => {
   const { href } = useLocation();
@@ -59,6 +60,7 @@ const SinglePage = ({ match }) => {
   
   const deleteExhbn = e => {
     e.preventDefault()
+    window.confirm("전시를 삭제하겠습니까?")
     axios.delete("http://localhost:8080/exhbns/delete", {
       data: {exhbnNum: match.params.exhbnNum}
     })
@@ -77,13 +79,11 @@ const SinglePage = ({ match }) => {
 
   return (
     <SinglePageWrapper>
+        <ButtonBox>
+          <Link to={`${UPDATE_EXHBN_PAGE}/${exhbnDetail.exhbnNum}`}><button className="update-btn" >수정</button></Link>
+          <button className="delete-btn" onClick={ deleteExhbn }>삭제</button>
+        </ButtonBox>
       <Container>
-        <Sticky innerZ={10003}>
-      <ButtonBox>
-      <Link to={`${UPDATE_EXHBN_PAGE}/${exhbnDetail.exhbnNum}`}><button className="update-btn" >수정</button></Link>
-        <button className="delete-btn" onClick={ deleteExhbn }>삭제</button>
-      </ButtonBox>
-      </Sticky>
         <Row gutter={30}>
           <Col xl={16}>
             <Summary
@@ -106,7 +106,7 @@ const SinglePage = ({ match }) => {
               <Sticky
                 innerZ={9999}
                 activeClass="isSticky"
-                top={180}
+                top={83}
                 bottomBoundary="#reviewSection"
               >
                 <Reservation number={exhbnDetail.exhbnNum} price={exhbnDetail.exhbnPrice}/>

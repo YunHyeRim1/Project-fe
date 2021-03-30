@@ -18,11 +18,11 @@ const AddListing = () => {
     case 1:
       stepComponent = <AddExhbn setStep={setStep} />;
       break;
-/*
+
     case 2:
       stepComponent = <HotelPhotos setStep={setStep} />;
       break;
-
+/*
     case 3:
       stepComponent = <HotelLocation setStep={setStep} />;
       break;

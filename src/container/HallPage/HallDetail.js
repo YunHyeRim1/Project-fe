@@ -8,6 +8,7 @@ import useWindowSize from 'library/hooks/useWindowSize';
 import useDataApi from 'library/hooks/useDataApi';
 import isEmpty from 'lodash/isEmpty';
 import Hall from './Hall/Hall';
+import VerticalTab from './VerticalTab/VerticalTab';
 import HallPageWrapper from './HallDetail.style';
 import axios from 'axios'
 
@@ -32,6 +33,7 @@ const HallDetail = ({ match }) => {
   }, [])
 
   if (isEmpty(hallDetail)) return <Loader />;
+
   const {
     title,
     content,
@@ -40,12 +42,18 @@ const HallDetail = ({ match }) => {
   return (
     <HallPageWrapper>
       <Container>
-        
-        <Hall
+        <Row gutter={30}>
+          <VerticalTab />
+          <Hall
             title={hallDetail.hallName}
-            content={content}
-        />
-
+            content={hallDetail.hallInfo}
+            time={hallDetail.hallTime}
+            closedday={hallDetail.hallClosed}
+            address={hallDetail.hallLocation}
+            pnumber={hallDetail.hallPnumber}
+            media={hallDetail.hallImage}
+          />
+        </Row>
       </Container>
     </HallPageWrapper>
   );

@@ -8,10 +8,11 @@ import { FormHeader, Title, FormContent, FormAction } from './AddListing.style';
 import axios from 'axios'
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
+import { render } from 'nprogress';
 
 const AddExhbn = ({ setStep }) => {
   const { action, state } = useStateMachine(AddListingAction);
-  const { control, errors, handleSubmit } = useForm();
+  const { register, errors, handleSubmit } = useForm();
   let history = useHistory();
   const [ exhbnTitle, setExhbnTitle ] = useState('')
   const [ hallLocation, setHallLocation ] = useState('')
@@ -22,26 +23,32 @@ const AddExhbn = ({ setStep }) => {
   const [ exhbnArtist, setExhbnArtist ] = useState('')
   const [ exhbnContent, setExhbnContent ] = useState('')
   const [ exhbnImage, setExhbnImage ] = useState('')
+  const [ exhbnNum, setExhbnNum ] = useState('')
 
   const URL = 'http://localhost:8080/exhbns/save'
 
   const add = e => {
     e.preventDefault()
-    axios.post(URL, {
-      exhbnTitle, hallLocation, startDate, endDate, exhbnGenre, exhbnPrice, exhbnArtist, exhbnContent, exhbnImage
+    axios.post(URL,{
+      exhbnTitle, hallLocation, startDate, endDate, exhbnGenre, exhbnPrice, exhbnArtist, exhbnContent, exhbnImage,
     })
     .then(resp => {
       alert(`전시 등록 완료`)
-      history.push('listing')
+      
     })
     .catch(err => {
       alert(`전시 등록 실패`)
       throw err;
     })
-  }
-
+}
+/* 
+  const onSubmit = (data) => {
+    action(data);
+    setStep(2);
+  };
+ */
   return (
-    <form>
+    <form/*  onSubmit={handleSubmit(onSubmit)} */>
       <FormContent>
         <FormHeader>
           <Title>전시회 등록</Title>
@@ -53,7 +60,7 @@ const AddExhbn = ({ setStep }) => {
               htmlFor="exhbnImage"
               error={errors.exhbnImage && <span>이 입력란을 작성해주세요!</span>}
             >
-            <Input id="exhbnImage" type="file" accept="image/jpeg, image/jpg, image/png" required
+            <Input id="exhbnImage" name="image" type="file" accept="image/*" required
                       onChange = { e => { setExhbnImage(`${e.target.value}`)}}/>     
             </FormControl>
           </Col>
@@ -160,6 +167,7 @@ const AddExhbn = ({ setStep }) => {
       </FormAction>
     </form>
   );
+
 };
 
 export default AddExhbn;

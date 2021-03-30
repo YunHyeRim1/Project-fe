@@ -10,12 +10,14 @@ export const PosterBox = styled.div`
   float: left;
   width: 45%;
   margin-top: 100px;
+  
 `;
 
 export const InfoBox = styled.div`
   float: left;
   width: 55%;
   margin-top: 100px;
+
 `;
 
 export const PosterImage = styled.div`
@@ -26,8 +28,10 @@ export const PosterImage = styled.div`
     height: 400px;
     object-fit: cover;
     float: left;
-    @media (max-width: 767px) {
-      height: 406px;
+    @media (max-width: 1200px) {
+      width: 300px;
+      height: 400px;
+      position: absolute;
     }
   }
 `;
@@ -35,7 +39,11 @@ export const PosterImage = styled.div`
 export const Info = styled.div`
   padding-left: 20px;
   height: 450px;
-
+  @media (max-width: 1200px) {
+    position: relative;
+    left: 100px;
+  }
+  
   ul {
     color: ${themeGet('text.0', '#2C2C2C')};
     font-size: 15px;
@@ -100,7 +108,16 @@ export const ButtonGroup = styled.div`
     }
 
     &:last-child {
-      margin-left: 7em;
+      margin-left: 97px;
+    }
+    @media (max-width: 1200px) {
+      position: relative;
+
+      &:last-child {
+        position: relative;
+        left: 90px;
+        bottom: 28px;
+      }
     }
   }
 `;

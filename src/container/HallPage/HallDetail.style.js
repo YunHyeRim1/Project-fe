@@ -3,6 +3,7 @@ import { themeGet } from '@styled-system/theme-get';
 
 const HallPageWrapper = styled.div`
   padding-bottom: 56px;
+  display: flex;
   
   @media (max-width: 480px) {
     margin-bottom: 30px;
