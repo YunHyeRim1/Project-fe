@@ -28,23 +28,20 @@ const Hall = (props) => {
         <HallImage>
           <img src={media} alt="" />
         </HallImage>
-
         <div class="hallInfo">
           <Heading as="h2" content={title} {...titleStyle} />
           <Text content={content} {...contentStyle} />
         </div>
       </HallBoxOne> 
-
       <HallBoxTwo>
         <div class="hallSum">
           <ul>
             <li><strong>관람시간</strong><span>{time}</span></li>
-            <li><strong>휴관일</strong><span>{closedday}</span></li>
-            <li><strong>주소</strong><span>{address}</span></li>
+            <li><strong>휴관일</strong>&emsp;<span>{closedday}</span></li>
+            <li><strong>주소</strong>&emsp;&emsp;<span>{address}</span></li>
             <li><strong>대표번호</strong><span>{pnumber}</span></li>
           </ul>
         </div>
-
         <HallBtn>
           <div class="wrap">
             <Link to={LISTING_POSTS_PAGE}>
@@ -53,12 +50,9 @@ const Hall = (props) => {
           </div>
         </HallBtn>
       </HallBoxTwo>
-        
-     
     </HallWrapper>
   );
 };
-
 
 
 Hall.propTypes = {
@@ -70,7 +64,7 @@ Hall.propTypes = {
         color: '#2C2C2C',
         fontSize: '25px',
         lineHeight: ['1.15', '1.2', '1.36'],
-        padding: '40px 0px 5px',
+        padding: '0px 0px 20px',
     },
     contentStyle: {
       fontSize: '14px',

@@ -42,8 +42,9 @@ const carouselOptions = {
   },
 };
 
-const LocationGrid = () => {
+const LocationGrid = (props) => {
   const { data } = useDataApi('http://localhost:8080/halls/all');
+  const { hallNum, hallName } = props;
 
   return (
     <LocationWrapper>
@@ -62,10 +63,10 @@ const LocationGrid = () => {
               options={carouselOptions}
             >
               <>
-                {data.map((post, index) => (
-                  <GlideSlide key={index}>
+                {data.map((post, hallNum) => (
+                  <GlideSlide key={hallNum++}>
                     <ImageCard
-                      link={HALL_DETAIL_PAGE}
+                      link={`halls/${hallNum}`}
                       imageSrc={post.hallImage}
                       title={post.hallName}
                       meta={`Show list`}

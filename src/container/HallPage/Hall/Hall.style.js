@@ -8,7 +8,7 @@ const HallWrapper = styled.div`
   flex-wrap: wrap;
   justify-content: flex-start;
   align-content: flex-start;
-  width: 80%;
+  width: 75%;
 
   
   img {
@@ -23,6 +23,7 @@ const HallWrapper = styled.div`
 
   .hallInfo {
     max-width: 88%;
+    margin-top: 50px;
 
     @media (max-width: 1200px) {
       width: 75%;
@@ -40,9 +41,14 @@ const HallWrapper = styled.div`
       left: 100px;
     }
 
+    li {
+      list-style-type: disc;
+    }
+
     ul {
       color: ${themeGet('text.0', '#2C2C2C')};
-      font-size: 14px;
+      font-size: 15px;
+      margin-left: 20px;
     }
   
     strong {

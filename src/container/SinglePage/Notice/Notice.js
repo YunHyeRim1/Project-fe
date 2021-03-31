@@ -20,9 +20,9 @@ const Notice = ({
         <br />
         <Text content="- 입장 시 QR코드 확인을 진행하고 있습니다." {...contentStyle} />
         <br />
-        <Text content="&nbsp;&nbsp;&nbsp;1) 카카오톡 로그인 후 QR코드를 발급하세요." {...contentStyle} />
-        <Text content="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;① 카카오톡 앱 실행 ② 정보제공 동의 ③ 최초 휴대폰 인증 ④ QR코드 발급" {...contentStyle} />
-        <Text content="&nbsp;&nbsp;&nbsp;2) QR코드를 직원에게 보여주세요 (QR코드는 1회용으로 발급되며, 입장 시 15초만 효력)" {...contentStyle} />
+        <Text content="&emsp;1) 카카오톡 로그인 후 QR코드를 발급하세요." {...contentStyle} />
+        <Text content="&emsp;&emsp;① 카카오톡 앱 실행 ② 정보제공 동의 ③ 최초 휴대폰 인증 ④ QR코드 발급" {...contentStyle} />
+        <Text content="&emsp;2) QR코드를 직원에게 보여주세요 (QR코드는 1회용으로 발급되며, 입장 시 15초만 효력)" {...contentStyle} />
         <br />
         <Text content="- 전시장 입장 시 반드시 마스크를 착용해주십시오.(미착용 시 입장 불가)" {...contentStyle} />
         <br />

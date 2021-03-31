@@ -6,6 +6,7 @@ import ImageCardWrapper, {
   Title,
   Meta,
 } from './ImageCard.style';
+import HallDetail from 'container/HallPage/HallDetail';
 
 const ImageCard = ({ 
   className, 
@@ -28,7 +29,7 @@ const ImageCard = ({
 
   return (
     <ImageCardWrapper className={addAllClasses.join(' ')}>
-       <Link to={`${link}/${slug}`}>
+        <Link to={link}>
         <img src={imageSrc} alt={title} />
         <ContentWrapper>
           {title && <Title>{title}</Title>}
