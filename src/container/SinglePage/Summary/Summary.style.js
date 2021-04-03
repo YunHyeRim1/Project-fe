@@ -43,14 +43,31 @@ export const Info = styled.div`
     position: relative;
     left: 100px;
   }
-  
+
   ul {
-    color: ${themeGet('text.0', '#2C2C2C')};
-    font-size: 15px;
+  
   }
+  
+  li {
+    display: flex;
+    flex-flow: column;
+  }
+
   strong {
-    color: ${themeGet('text.0', '#2C2C2C')};
-    padding: 0px 50px 0px 0px;
+    font-size: 15px;
+    margin-right: 50px;
+  }
+
+  span {
+    font-size: 15px;
+    position: relative;
+    bottom: 23px;
+    left: 70px;
+    max-width: 300px;
+
+    @media (max-width: 1200px) {
+      max-width: 400px;
+    }
   }
   
 `;
@@ -98,6 +115,8 @@ export const ButtonGroup = styled.div`
     }
 
     &:first-child {
+      position: relative;
+      left: -8px;
       svg {
         position: relative;
         top: 0px;
@@ -108,15 +127,11 @@ export const ButtonGroup = styled.div`
     }
 
     &:last-child {
-      margin-left: 95px;
-    }
-    @media (max-width: 1200px) {
-      position: relative;
-
-      &:last-child {
+      margin-left: 99px;
+      @media (max-width: 767px) {
         position: relative;
-        left: 90px;
-        bottom: 28px;
+        left: 89px;
+        bottom: 27px;
       }
     }
   }

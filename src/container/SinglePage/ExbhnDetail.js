@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { useLocation } from 'library/hooks/useLocation';
 import Sticky from 'react-stickynode';
-import { Row, Col, Modal, Button } from 'antd';
+import { Row, Col, Button } from 'antd';
 import Container from 'components/UI/Container/Container';
 import Loader from 'components/Loader/Loader';
 import useWindowSize from 'library/hooks/useWindowSize';
@@ -13,14 +13,12 @@ import Reservation from './Reservation/Reservation';
 import BottomReservation from './Reservation/BottomReservation';
 import TopBar from './TopBar/TopBar';
 import SinglePageWrapper, { ButtonBox } from './ExbhnDetail.style';
-import useDataApi from 'library/hooks/useDataApi';
 import isEmpty from 'lodash/isEmpty';
 import Summary from './Summary/Summary';
 import axios from 'axios'
 import { useHistory } from 'react-router';
 import { ADD_EXHBN_PAGE, ADD_HOTEL_PAGE, UPDATE_EXHBN_PAGE } from 'settings/constant';
 import { Link } from 'react-router-dom';
-import { Autocomplete } from '@material-ui/core';
 
 const SinglePage = ({ match }) => {
   const { href } = useLocation();
@@ -41,7 +39,7 @@ const SinglePage = ({ match }) => {
 
   const URL = `http://localhost:8080/exhbns/one/`
   
-  useEffect(e => {
+  useEffect(() => {
     axios.get(URL+match.params.exhbnNum)
     .then(resp => {
       setexhbnDetail(resp.data)
@@ -52,17 +50,23 @@ const SinglePage = ({ match }) => {
     })
   }, [])
 
-  // const { data, loading } = useDataApi(`http://localhost:8080/exhbns/all`);
-
   if (isEmpty(exhbnDetail)) return <Loader />;
 
  
   
   const deleteExhbn = e => {
     e.preventDefault()
-    window.confirm("전시를 삭제하겠습니까?")
-    axios.delete("http://localhost:8080/exhbns/delete", {
-      data: {exhbnNum: match.params.exhbnNum}
+    window.confirm("전시를 삭제하시겠습니까?")
+    axios({
+      url: 'http://localhost:8080/exhbns/delete',
+      method: 'delete',
+      headers: {
+        'Content-Type'  : 'application/json',
+        'Authorization' : 'JWT fefege..'
+      },
+      data: { 
+        exhbnNum: match.params.exhbnNum 
+      }
     })
     .then(resp => {
       alert(`삭제 완료`)

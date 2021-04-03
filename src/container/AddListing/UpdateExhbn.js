@@ -22,12 +22,14 @@ const AddExhbn = ({ setStep, match }) => {
   const [ exhbnArtist, setExhbnArtist ] = useState('')
   const [ exhbnContent, setExhbnContent ] = useState('')
   const [ exhbnImage, setExhbnImage ] = useState('')
+  const [ exhbnNum, setExhbnNum ] = useState('')
   const [ exhbnDetail, setExhbnDetail] = useState({})
 
-  useEffect(() => {
+  useEffect(e => {
     axios.get("http://localhost:8080/exhbns/one/"+match.params.exhbnNum)
     .then((resp) => {
       setExhbnDetail(resp.data)
+      setExhbnNum(resp.data)
     })
     .catch((err) => {
       alert(`실패`)
@@ -37,9 +39,17 @@ const AddExhbn = ({ setStep, match }) => {
 
   const updateExhbn = e => {
     e.preventDefault()
-    window.confirm("전시를 수정하겠습니까?")
-    axios.put("http://localhost:8080/exhbns/update/"+match.params.exhbnNum, {
-      exhbnTitle, hallLocation, startDate, endDate, exhbnGenre, exhbnPrice, exhbnArtist, exhbnContent, exhbnImage
+    window.confirm("전시를 수정하시겠습니까?")
+    axios({
+      url: 'http://localhost:8080/exhbns/update/'+match.params.exhbnNum,
+      method: 'put',
+      headers: {
+        'Content-Type'  : 'application/json',
+        'Authorization' : 'JWT fefege..'
+      },
+      data: {
+        exhbnTitle, hallLocation, startDate, endDate, exhbnGenre, exhbnPrice, exhbnArtist, exhbnContent, exhbnImage
+      }
     })
     .then(resp => {
       alert(`수정 완료`)

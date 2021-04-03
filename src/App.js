@@ -18,6 +18,7 @@ import {
   PRICING_PLAN_PAGE,
   ADD_EXHBN_PAGE,
   UPDATE_EXHBN_PAGE,
+  ADD_IMAGE_PAGE,
 } from './settings/constant';
 
 /**
@@ -151,6 +152,17 @@ const routes = [
       modules: ['UpdateExhbn'],
     }),
   },
+  {
+    path: ADD_IMAGE_PAGE,
+    component: Loadable({
+      loader: () =>
+        import(
+          /* webpackChunkName: "AddExhbn" */ './container/AddListing/HotelPhotos'
+        ),
+      loading: Loading,
+      modules: ['HotelPhotos'],
+    }),
+  },
 ];
 
 /**
@@ -214,7 +226,7 @@ const App = () => {
         {routes.map(({ path, component, exact = false }) => (
           <Route key={path} path={path} exact={exact} component={component} />
         ))}
-        <ProtectedRoute path={ADD_HOTEL_PAGE} component={ADD_HOTEL_PAGE} />
+        <ProtectedRoute path={ADD_HOTEL_PAGE} component={AddListing} />
         <ProtectedRoute
           path={AGENT_ACCOUNT_SETTINGS_PAGE}
           component={AgentAccountSettingsPage}

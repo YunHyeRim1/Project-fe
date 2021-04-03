@@ -26,6 +26,7 @@ export const PRIVACY_PAGE = '/privacy';
 export const ADD_HOTEL_PAGE = '/add-hotel';
 export const ADD_EXHBN_PAGE = '/add-exhbn';
 export const UPDATE_EXHBN_PAGE = '/update-exhbn';
+export const ADD_IMAGE_PAGE = '/add-photos'
 
 // Login / Registration Page
 export const LOGIN_PAGE = '/sign-in';

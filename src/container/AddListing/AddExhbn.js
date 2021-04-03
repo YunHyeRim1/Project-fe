@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useStateMachine } from 'little-state-machine';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { Row, Col, Input, Button } from 'antd';
 import FormControl from 'components/UI/FormControl/FormControl';
 import AddListingAction from './AddListingAction';
 import { FormHeader, Title, FormContent, FormAction } from './AddListing.style';
 import axios from 'axios'
 import { useHistory } from 'react-router';
-import { Link } from 'react-router-dom';
-import { render } from 'nprogress';
 
 const AddExhbn = ({ setStep }) => {
   const { action, state } = useStateMachine(AddListingAction);
@@ -25,30 +23,36 @@ const AddExhbn = ({ setStep }) => {
   const [ exhbnImage, setExhbnImage ] = useState('')
   const [ exhbnNum, setExhbnNum ] = useState('')
 
-  const URL = 'http://localhost:8080/exhbns/save'
-
   const add = e => {
-    e.preventDefault()
-    axios.post(URL,{
-      exhbnTitle, hallLocation, startDate, endDate, exhbnGenre, exhbnPrice, exhbnArtist, exhbnContent, exhbnImage,
-    })
+    const formData = new FormData();
+    axios({
+      url: 'http://localhost:8080/exhbns/save', 
+      method: 'post',
+      headers: {
+        'Content-Type'  : 'application/json',
+        'Authorization' : 'JWT fefege..'
+      },
+      data: { formData,
+        exhbnTitle, hallLocation, startDate, endDate, exhbnGenre, exhbnPrice, exhbnArtist, exhbnContent, exhbnImage 
+      }
+    }) 
     .then(resp => {
       alert(`전시 등록 완료`)
-      
+      window.location.reload()
     })
     .catch(err => {
       alert(`전시 등록 실패`)
       throw err;
     })
-}
-/* 
+  }
+
   const onSubmit = (data) => {
     action(data);
     setStep(2);
   };
- */
+
   return (
-    <form/*  onSubmit={handleSubmit(onSubmit)} */>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <FormContent>
         <FormHeader>
           <Title>전시회 등록</Title>
@@ -59,9 +63,9 @@ const AddExhbn = ({ setStep }) => {
               label="전시 포스터"
               htmlFor="exhbnImage"
               error={errors.exhbnImage && <span>이 입력란을 작성해주세요!</span>}
-            >
-            <Input id="exhbnImage" name="image" type="file" accept="image/*" required
-                      onChange = { e => { setExhbnImage(`${e.target.value}`)}}/>     
+              >
+            <input name="exhbnImage" type="file" accept="image/*" required
+                      onChange = { e => { setExhbnImage(`${e.target.value}`)}} />     
             </FormControl>
           </Col>
         </Row>

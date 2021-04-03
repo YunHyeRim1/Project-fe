@@ -22,11 +22,11 @@ const AddListing = () => {
     case 2:
       stepComponent = <HotelPhotos setStep={setStep} />;
       break;
-/*
+
     case 3:
       stepComponent = <HotelLocation setStep={setStep} />;
       break;
-
+/*
      case 4:
       stepComponent = <HotelAmenities setStep={setStep} />;
       break;

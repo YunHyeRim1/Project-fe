@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { IoIosArrowBack } from 'react-icons/io';
 import { useStateMachine } from 'little-state-machine';
 import { useForm } from 'react-hook-form';
@@ -7,9 +7,11 @@ import DragAndDropUploader from 'components/UI/ImageUploader/DragAndDropUploader
 import FormControl from 'components/UI/FormControl/FormControl';
 import AddListingAction from './AddListingAction';
 import { FormHeader, Title, FormContent, FormAction } from './AddListing.style';
+import axios from 'axios'
 
 const HotelPhotos = ({ setStep }) => {
   const { register, errors, setValue, handleSubmit } = useForm({
+    
  /*    defaultValues: {
       hotelPhotos: [
         {
@@ -36,10 +38,27 @@ const HotelPhotos = ({ setStep }) => {
       ],
     }, */
   });
-
+  const [ exhbnImage, setExhbnImage ] = useState('')
   const { action, state } = useStateMachine(AddListingAction);
+
+  const URL = 'http://localhost:8080/exhbns/save'
+
+  const add = e => {
+    e.preventDefault()
+    axios.post(URL,{
+      exhbnImage,
+    })
+    .then(resp => {
+      alert(`포스터 등록 완료`)
+    })
+    .catch(err => {
+      alert(`포스터 등록 실패`)
+      throw err;
+    })
+}
+
   useEffect(() => {
-    register({ name: 'hotelPhotos' }, { required: true });
+    register({ name: {exhbnImage} }, { required: true });
   }, [register]);
 
   const onSubmit = (data) => {
@@ -58,8 +77,9 @@ const HotelPhotos = ({ setStep }) => {
         >
           <DragAndDropUploader
             name="포스터"
-            value={state.data.exhbnImage}
-            onUploadChange={(data) => setValue('hotelPhotos', data)}
+            id="exhbnImage"
+            accept="image/*"
+            onUploadChange={(data) => setExhbnImage('exhbnImage', data)}
           />
         </FormControl>
       </FormContent>
@@ -72,7 +92,7 @@ const HotelPhotos = ({ setStep }) => {
           >
             <IoIosArrowBack /> 뒤로가기
           </Button>
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" onClick={ add } >
             등록하기
           </Button>
         </div>
